@@ -1,51 +1,39 @@
----
-import Container from "./Container.astro";
-const links = [
-    {
-        to: "/#features",
-        label: "Features",
-    },
-    {
-        to: "/#hardware",
-        label: "Hardware",
-    },
-    {
-        to: "https://wiki.openshock.org",
-        label: "Wiki",
-        target: "_blank",
-    }
-];
----
-
 <script>
+  import Container from './Container.svelte';
+  import { onMount } from 'svelte';
+  const links = [
+    { to: '/#features', label: 'Features' },
+    { to: '/#hardware', label: 'Hardware' },
+    { to: 'https://wiki.openshock.org', label: 'Wiki', target: '_blank' }
+  ];
+  onMount(() => {
     let isToggled = false;
-    const navlinks = document.querySelector("#navlinks");
-    const hamburger = document.querySelector("#hamburger");
-    const layer = document.querySelector("#navLayer");
-    const links = [...navlinks.querySelector("ul").children];
-
+    const navlinks = document.querySelector('#navlinks');
+    const hamburger = document.querySelector('#hamburger');
+    const layer = document.querySelector('#navLayer');
+    const linksEls = [...navlinks.querySelector('ul').children];
     function toggleNavlinks() {
-        if (isToggled) {
-            navlinks.classList.add("!visible", "!scale-100", "!opacity-100", "!lg:translate-y-0");
-            hamburger.classList.add("toggled");
-            layer.classList.add("origin-top", "scale-y-100");
-        } else {
-            navlinks.classList.remove("!visible", "!scale-100", "!opacity-100", "!lg:translate-y-0");
-            hamburger.classList.remove("toggled");
-            layer.classList.remove("origin-top", "scale-y-100");
-        }
+      if (isToggled) {
+        navlinks.classList.add('!visible', '!scale-100', '!opacity-100', '!lg:translate-y-0');
+        hamburger.classList.add('toggled');
+        layer.classList.add('origin-top', 'scale-y-100');
+      } else {
+        navlinks.classList.remove('!visible', '!scale-100', '!opacity-100', '!lg:translate-y-0');
+        hamburger.classList.remove('toggled');
+        layer.classList.remove('origin-top', 'scale-y-100');
+      }
     }
-    hamburger.addEventListener("click", () => {
+    hamburger.addEventListener('click', () => {
+      isToggled = !isToggled;
+      toggleNavlinks();
+    });
+    linksEls.forEach((link) => {
+      link.addEventListener('click', () => {
         isToggled = !isToggled;
         toggleNavlinks();
+      });
     });
-
-    links.forEach((link) => {
-        link.addEventListener("click", () => {
-            isToggled = !isToggled;
-            toggleNavlinks();
-        });
-    });
+  });
 </script>
 
 <header>
@@ -54,7 +42,7 @@ const links = [
             <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
                 <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
                     <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
-                        <img class="h-[36px]" src="/logo.svg" aria-hidden="true" class="flex space-x-1">
+                        <img class="h-[36px]" src="/logo.svg" alt="OpenShock logo">
                     </a>
 
                     <div class="relative flex max-h-10 items-center lg:hidden">
@@ -68,15 +56,13 @@ const links = [
                 <div id="navlinks" class="invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none">
                     <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
                         <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
-                            {
-                                links.map((link) => (
-                                    <li>
-                                        <a href={link.to} target={link.target} class="hover:text-primary block transition dark:hover:text-white md:px-4">
-                                            <span>{link.label}</span>
-                                        </a>
-                                    </li>
-                                ))
-                            }
+                            {#each links as link}
+                                <li>
+                                    <a href={link.to} target={link.target} class="hover:text-primary block transition dark:hover:text-white md:px-4">
+                                        <span>{link.label}</span>
+                                    </a>
+                                </li>
+                            {/each}
                                 <li>
                                         <a href="https://discord.gg/OpenShock" target="_blank" class="hover:text-primary block transition dark:hover:text-white md:px-4">
                                             <svg
@@ -93,7 +79,7 @@ const links = [
                                             <span>Discord</span>
                                         </a>
                                     </li>
-  
+
                         </ul>
 
 
@@ -103,7 +89,6 @@ const links = [
                         <a href="https://openshock.app" class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
                             <span class="relative text-sm font-semibold text-white"> OpenShock.app</span>
                             <svg class="ml-3 w-[16px] h-[16px] text-white z-[1]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                 <path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                         </a>
                     </div>

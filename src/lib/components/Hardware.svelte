@@ -1,6 +1,6 @@
----
-import Container from "./Container.astro";
----
+<script>
+import Container from './Container.svelte';
+</script>
 
 <div id="hardware">
   <Container>
@@ -12,7 +12,7 @@ import Container from "./Container.astro";
       <div class="md:5/12 lg:w-1/2 transition duration-700 hover:scale-105">
         <img
           src="/images/OpenShockCoreV2CasePink.webp"
-          alt="image"
+          alt="OpenShock hub"
           loading="lazy"
           width=""
           height=""

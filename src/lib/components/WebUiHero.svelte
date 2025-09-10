@@ -1,6 +1,6 @@
----
-import Container from "./Container.astro";
----
+<script>
+import Container from './Container.svelte';
+</script>
 
 <div id="webui-hero" class="!mt-[5rem]">
   <Container>
@@ -31,7 +31,7 @@ import Container from "./Container.astro";
             class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite_8s] bg-[conic-gradient(from_225deg_at_50%_50%,_theme(colors.transparent)_0%,_theme(colors.transparent)_92%,_theme(colors.zinc.500)_97%,_theme(colors.transparent)_100%)]"
           ></span>
           <img
-            class="rounded-[inherit]"
+            class="rounded-[inherit]" alt="Shockers"
             style="z-index: 1;"
             src="/images/webui/shockers.webp"
           />
@@ -43,7 +43,7 @@ import Container from "./Container.astro";
         class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900"
       >
         <a
-          href="https://openshock.app"
+          href="https://openshock.app" aria-label="OpenShock app"
           target="_blank"
           class="group overflow-hidden rounded-full border border-zinc-500/10 bg-zinc-500/10 shadow-xl backdrop-blur-md transition hover:scale-110"
           ><div
