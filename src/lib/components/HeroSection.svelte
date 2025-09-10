@@ -1,6 +1,6 @@
----
-import Container from "./Container.astro";
----
+<script>
+import Container from './Container.svelte';
+</script>
 
 <div class="relative" id="home">
   <div

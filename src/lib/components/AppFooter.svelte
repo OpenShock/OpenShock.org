@@ -1,6 +1,6 @@
----
-import Container from "./Container.astro";
----
+<script>
+import Container from './Container.svelte';
+</script>
 
 <h2 class="mx-auto text-center text-xl text-zinc-500">This site is WIP, please share feedback with us if you have any!</h2>
 <footer class="py-20 md:py-40">
@@ -11,7 +11,7 @@ import Container from "./Container.astro";
           class="flex w-full justify-center space-x-12 text-gray-600 dark:text-gray-300 sm:w-7/12 md:justify-start"
         >
           <ul class="list-inside list-disc space-y-8">
-            <li><a href="#" class="transition hover:text-primary">Home</a></li>
+            <li><a href="/#home" class="transition hover:text-primary">Home</a></li>
 
             <li>
               <a
