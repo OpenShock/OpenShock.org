@@ -21,3 +21,5 @@ pnpm-debug.log*
 .vscode
 .vs
 .idea
+# SvelteKit build
+.svelte-kit/
