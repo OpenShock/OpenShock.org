@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
       <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
         <div class="flex w-full justify-center space-x-12 text-gray-600 dark:text-gray-300 sm:w-7/12 md:justify-start">
           <ul class="list-inside list-disc space-y-8">
-            <li><a href="#" class="transition hover:text-primary">Home</a></li>
+            <li><a href="/" class="transition hover:text-primary">Home</a></li>
             <li>
               <a href="https://wiki.openshock.org" class="transition hover:text-primary">Docs</a>
             </li>
