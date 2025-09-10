@@ -10,7 +10,7 @@ function toggle() { navOpen = !navOpen; }
 </script>
 
 <header>
-    <nav class="absolute z-10 w-full border-b border-black/5 dark:border-white/5 lg:border-transparent">
+    <nav class="fixed top-0 left-0 z-10 w-full border-b border-black/5 bg-white dark:bg-gray-900 dark:border-white/5 lg:border-transparent">
         <Container>
             <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
                 <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
