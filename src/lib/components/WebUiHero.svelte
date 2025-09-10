@@ -1,6 +1,6 @@
----
-import Container from "./Container.astro";
----
+<script>
+import Container from '$lib/components/Container.svelte';
+</script>
 
 <div id="webui-hero" class="!mt-[5rem]">
   <Container>
@@ -33,7 +33,7 @@ import Container from "./Container.astro";
           <img
             class="rounded-[inherit]"
             style="z-index: 1;"
-            src="/images/webui/shockers.webp"
+            src="/images/webui/shockers.webp" alt="Shockers UI"
           />
         </div>
       </div>
@@ -42,7 +42,7 @@ import Container from "./Container.astro";
         style="z-index: 2;"
         class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900"
       >
-        <a
+        <a aria-label="OpenShock app"
           href="https://openshock.app"
           target="_blank"
           class="group overflow-hidden rounded-full border border-zinc-500/10 bg-zinc-500/10 shadow-xl backdrop-blur-md transition hover:scale-110"

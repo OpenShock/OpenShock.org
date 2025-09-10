@@ -1,6 +1,6 @@
----
-import Container from "./Container.astro";
----
+<script>
+import Container from '$lib/components/Container.svelte';
+</script>
 
 <div id="integrations-hero" class="!mt-14">
   <Container>
@@ -53,16 +53,7 @@ import Container from "./Container.astro";
             height=""
           />
       </a>
-        <!--<a class="p-4 grayscale transition duration-200 hover:grayscale-0" target="_blank" href="https://github.com/OpenShock/Integrations.Twitch">
-          <img
-            src="./images/games/twitch_wordmark_extruded_purple.png"
-            class="h-12 w-auto mx-auto"
-            loading="lazy"
-            alt="client logo"
-            width=""
-            height=""
-          />
-        </a>-->
+        
         <a class="p-4 flex" target="_blank" href="https://github.com/OpenShock/DiscordBot">
           <img
             src="./images/games/discord-logo-white.svg"
@@ -73,7 +64,7 @@ import Container from "./Container.astro";
             height=""
           />
         </a>
-        
+
       </div>
     </div>
   </Container>
