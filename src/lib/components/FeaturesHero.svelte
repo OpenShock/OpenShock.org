@@ -1,25 +1,20 @@
 <script>
-import Container from './Container.svelte';
+  import Container from './Container.svelte';
 </script>
 
 <div id="integrations-hero" class="!mt-14">
   <Container>
     <div>
-      <h2
-        class="text-center font-bold text-gray-800 dark:text-white md:text-4xl"
-      >
+      <h2 class="text-center font-bold text-gray-800 dark:text-white md:text-4xl">
         Popular Integrations
       </h2>
       <p class="mx-auto text-center mt-8 text-gray-700 dark:text-gray-300">
-        These are some of the popular game / platform integrations that
-        OpenShock supports.
+        These are some of the popular game / platform integrations that OpenShock supports.
       </p>
       <p class="mx-auto text-center text-sm text-gray-500 dark:text-gray-800">
-        Note that these brands / games / platforms are not officially affiliated
-        with OpenShock.
+        Note that these brands / games / platforms are not officially affiliated with OpenShock.
       </p>
       <div class="mt-12 grid grid-cols-2 sm:grid-cols-4">
-
         <a class="p-4" target="_blank" href="https://github.com/OpenShock/ShockOSC">
           <img
             src="./images/games/VRC_Logo.png"
@@ -42,7 +37,8 @@ import Container from './Container.svelte';
         </a>
         <a
           class="p-4 flex grayscale transition duration-200 hover:grayscale-0"
-           target="_blank" href="https://modrinth.com/mod/shockcraft"
+          target="_blank"
+          href="https://modrinth.com/mod/shockcraft"
         >
           <img
             src="./images/games/Minecraft_franchise_logo.svg"
@@ -52,7 +48,7 @@ import Container from './Container.svelte';
             width=""
             height=""
           />
-      </a>
+        </a>
         <!--<a class="p-4 grayscale transition duration-200 hover:grayscale-0" target="_blank" href="https://github.com/OpenShock/Integrations.Twitch">
           <img
             src="./images/games/twitch_wordmark_extruded_purple.png"
@@ -73,7 +69,6 @@ import Container from './Container.svelte';
             height=""
           />
         </a>
-        
       </div>
     </div>
   </Container>

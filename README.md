@@ -9,6 +9,7 @@ Took some inspiration from [Hoppscotch landing page](https://hoppscotch.com)
 ## Contributing
 
 How to run the project locally:
+
 - `npm i`
 - `npm run dev`
 

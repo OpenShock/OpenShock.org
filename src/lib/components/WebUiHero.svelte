@@ -1,5 +1,5 @@
 <script>
-import Container from './Container.svelte';
+  import Container from './Container.svelte';
 </script>
 
 <div id="webui-hero" class="!mt-[5rem]">
@@ -13,12 +13,10 @@ import Container from './Container.svelte';
       >
         <div
           class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"
-        >
-        </div>
+        ></div>
         <div
           class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"
-        >
-        </div>
+        ></div>
       </div>
       <div class="relative">
         <div
@@ -31,7 +29,8 @@ import Container from './Container.svelte';
             class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite_8s] bg-[conic-gradient(from_225deg_at_50%_50%,_theme(colors.transparent)_0%,_theme(colors.transparent)_92%,_theme(colors.zinc.500)_97%,_theme(colors.transparent)_100%)]"
           ></span>
           <img
-            class="rounded-[inherit]" alt="Shockers"
+            class="rounded-[inherit]"
+            alt="Shockers"
             style="z-index: 1;"
             src="/images/webui/shockers.webp"
           />
@@ -43,7 +42,8 @@ import Container from './Container.svelte';
         class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900"
       >
         <a
-          href="https://openshock.app" aria-label="OpenShock app"
+          href="https://openshock.app"
+          aria-label="OpenShock app"
           target="_blank"
           class="group overflow-hidden rounded-full border border-zinc-500/10 bg-zinc-500/10 shadow-xl backdrop-blur-md transition hover:scale-110"
           ><div
@@ -56,7 +56,8 @@ import Container from './Container.svelte';
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M7 7h10v10M7 17L17 7"></path></svg
+                d="M7 7h10v10M7 17L17 7"
+              ></path></svg
             >
           </div></a
         >

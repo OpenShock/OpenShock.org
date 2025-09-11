@@ -4,27 +4,32 @@
 
 /* Global background to avoid plain white page and match prior brand feel */
 @layer base {
-	html, body {
-		height: 100%;
-	}
-	body {
-		/* soft lavender base from theme gray-50 (#f2f1fc) */
-		background-color: #f2f1fc;
-		/* subtle brand-tinted radial accents (primary/info) */
-		background-image:
-			radial-gradient(600px 220px at 85% -10%, rgba(225, 74, 109, 0.12), rgba(225, 74, 109, 0) 60%),
-			radial-gradient(520px 420px at -10% 110%, rgba(12, 99, 231, 0.10), rgba(12, 99, 231, 0) 60%);
-		background-attachment: fixed, fixed;
-		background-repeat: no-repeat;
-		background-size: auto;
-	}
-		@media (prefers-color-scheme: dark) {
-			body {
-				/* near-black background from theme gray-900 */
-				background-color: #18141c;
-				background-image:
-					radial-gradient(620px 240px at 85% -10%, rgba(103, 53, 165, 0.18), rgba(103, 53, 165, 0) 60%),
-					radial-gradient(520px 420px at -10% 110%, rgba(12, 99, 231, 0.18), rgba(12, 99, 231, 0) 60%);
-			}
-		}
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    /* soft lavender base from theme gray-50 (#f2f1fc) */
+    background-color: #f2f1fc;
+    /* subtle brand-tinted radial accents (primary/info) */
+    background-image:
+      radial-gradient(600px 220px at 85% -10%, rgba(225, 74, 109, 0.12), rgba(225, 74, 109, 0) 60%),
+      radial-gradient(520px 420px at -10% 110%, rgba(12, 99, 231, 0.1), rgba(12, 99, 231, 0) 60%);
+    background-attachment: fixed, fixed;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      /* near-black background from theme gray-900 */
+      background-color: #18141c;
+      background-image:
+        radial-gradient(
+          620px 240px at 85% -10%,
+          rgba(103, 53, 165, 0.18),
+          rgba(103, 53, 165, 0) 60%
+        ),
+        radial-gradient(520px 420px at -10% 110%, rgba(12, 99, 231, 0.18), rgba(12, 99, 231, 0) 60%);
+    }
+  }
 }

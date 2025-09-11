@@ -1,5 +1,5 @@
 <script>
-import Container from './Container.svelte';
+  import Container from './Container.svelte';
 </script>
 
 <div id="hardware">
@@ -20,25 +20,20 @@ import Container from './Container.svelte';
         />
       </div>
       <div class="md:7/12 lg:w-1/2">
-        <h2
-          class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white"
-        >
+        <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
           DIY Hardware (OpenShock Hub)
         </h2>
         <p class="my-8 text-gray-600 dark:text-gray-300">
-          OpenShock supports various types of ESP-32's, which are low-cost,
-          low-power microcontrollers that can combied with a 443Mhz Transmitter
-          to be used to control shockers.
+          OpenShock supports various types of ESP-32's, which are low-cost, low-power
+          microcontrollers that can combied with a 443Mhz Transmitter to be used to control
+          shockers.
           <br /><br />
-          You can build your own OpenShock Hub and integrate them with OpenShock
-          by using our custom firmware.
+          You can build your own OpenShock Hub and integrate them with OpenShock by using our custom
+          firmware.
 
           <br /><br />
-          Our community also provides pre-built OpenShock Hubs for sale. Checkout
-          the
-          <a
-            class="text-primary"
-            href="https://wiki.openshock.org/vendors/hardware/"
+          Our community also provides pre-built OpenShock Hubs for sale. Checkout the
+          <a class="text-primary" href="https://wiki.openshock.org/vendors/hardware/"
             >community vendors</a
           > for more information.
         </p>
@@ -48,9 +43,7 @@ import Container from './Container.svelte';
             href="https://wiki.openshock.org/diy/assembling/"
             class="cursor-pointer mt-8 flex gap-4 md:items-center hover:text-primary transition duration-300"
           >
-            <div
-              class="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20"
-            >
+            <div class="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20">
               <svg
                 fill="currentColor"
                 class="w-6 h-6 m-auto text-indigo-500 dark:text-indigo-400"
@@ -63,9 +56,7 @@ import Container from './Container.svelte';
               >
             </div>
             <div class="w-5/6 flex">
-              <h3 class="font-semibold text-lg flex-grow">
-                Do-It-Yourself Guides
-              </h3>
+              <h3 class="font-semibold text-lg flex-grow">Do-It-Yourself Guides</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -75,7 +66,8 @@ import Container from './Container.svelte';
                 <path
                   fill-rule="evenodd"
                   d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                  clip-rule="evenodd"></path>
+                  clip-rule="evenodd"
+                ></path>
               </svg>
             </div>
           </a>
@@ -85,9 +77,7 @@ import Container from './Container.svelte';
             href="https://wiki.openshock.org/vendors/hardware/"
             class="cursor-pointer pt-4 flex gap-4 md:items-center hover:text-primary transition duration-300"
           >
-            <div
-              class="w-12 h-12 flex gap-4 rounded-full bg-teal-100 dark:bg-teal-900/20"
-            >
+            <div class="w-12 h-12 flex gap-4 rounded-full bg-teal-100 dark:bg-teal-900/20">
               <svg
                 fill="currentColor"
                 class="w-6 h-6 m-auto text-teal-600 dark:text-teal-400"
@@ -100,9 +90,7 @@ import Container from './Container.svelte';
               >
             </div>
             <div class="w-5/6 flex">
-              <h3 class="font-semibold text-lg flex-grow">
-                Prebuilt Vendor List
-              </h3>
+              <h3 class="font-semibold text-lg flex-grow">Prebuilt Vendor List</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -112,7 +100,8 @@ import Container from './Container.svelte';
                 <path
                   fill-rule="evenodd"
                   d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                  clip-rule="evenodd"></path>
+                  clip-rule="evenodd"
+                ></path>
               </svg>
             </div>
           </a>
