@@ -23,32 +23,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 24.8.0
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
 
-      - uses: actions/cache@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          path: |
-            ~/.npm
-            ~/node_modules
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
+          version: 10
 
-      - name: Install dependencies
-        run: npm install --production=false
-      #                  ^
-      # This is necessary since NODE_ENV=production, but we need dev dependencies to build.
+      - name: Install dependencies (include dev deps)
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
       - name: Build
-        run: npm run build --if-present
+        run: pnpm build
 
       - name: Compress internal artifacts
         run: |
-          cd dist
+          cd build
           zip -r ${{ env.ARTIFACT_NAME }} .
           cd ..
-          mv dist/${{ env.ARTIFACT_NAME }} .
+          mv build/${{ env.ARTIFACT_NAME }} .
 
       - name: Upload internal artifacts
         uses: actions/upload-artifact@v4
