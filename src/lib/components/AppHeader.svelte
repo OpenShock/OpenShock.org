@@ -31,9 +31,7 @@
     }`
   );
   const navLinksClass = $derived(
-    `invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none ${
-      isOpen ? '!visible !scale-100 !opacity-100 !lg:translate-y-0' : ''
-    }`
+    `${isOpen ? '!visible !scale-100 !opacity-100 !lg:translate-y-0' : ''}`
   );
 </script>
 
@@ -51,19 +49,24 @@
           <div class="relative flex max-h-10 items-center lg:hidden">
             <button
               aria-label="humburger"
-              id="hamburger"
               aria-expanded={isOpen}
               class="relative -mr-6 p-6"
               onclick={toggleNav}
               type="button"
             >
-              <div aria-hidden="true" id="line" class={line1Class}></div>
-              <div aria-hidden="true" id="line2" class={line2Class}></div>
+              <div aria-hidden="true" class={line1Class}></div>
+              <div aria-hidden="true" class={line2Class}></div>
             </button>
           </div>
         </div>
-        <div id="navLayer" aria-hidden="true" class={navLayerClass} onclick={closeNav}></div>
-        <div id="navlinks" class={navLinksClass}>
+        <div aria-hidden="true" class={navLayerClass} onclick={closeNav}></div>
+        <div
+          class={'invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 ' + 
+          'flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white dark:bg-[#181a1b] ' +
+          'p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative ' +
+           'lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none ' + 
+           'lg:!bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none dark:border-gray-200 ' + navLinksClass}
+        >
           <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
             <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
               {#each links as link}
