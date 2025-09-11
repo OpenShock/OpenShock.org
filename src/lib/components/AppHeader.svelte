@@ -1,40 +1,40 @@
 <script>
-  import { onMount } from 'svelte';
   import Container from './Container.svelte';
 
+  // Nav links config
   const links = [
     { to: '/#features', label: 'Features' },
     { to: '/#hardware', label: 'Hardware' },
     { to: 'https://wiki.openshock.org', label: 'Wiki', target: '_blank' },
   ];
-  onMount(() => {
-    let isToggled = false;
-    const navlinks = document.querySelector('#navlinks');
-    const hamburger = document.querySelector('#hamburger');
-    const layer = document.querySelector('#navLayer');
-    const linksEls = [...navlinks.querySelector('ul').children];
-    function toggleNavlinks() {
-      if (isToggled) {
-        navlinks.classList.add('!visible', '!scale-100', '!opacity-100', '!lg:translate-y-0');
-        hamburger.classList.add('toggled');
-        layer.classList.add('origin-top', 'scale-y-100');
-      } else {
-        navlinks.classList.remove('!visible', '!scale-100', '!opacity-100', '!lg:translate-y-0');
-        hamburger.classList.remove('toggled');
-        layer.classList.remove('origin-top', 'scale-y-100');
-      }
-    }
-    hamburger.addEventListener('click', () => {
-      isToggled = !isToggled;
-      toggleNavlinks();
-    });
-    linksEls.forEach((link) => {
-      link.addEventListener('click', () => {
-        isToggled = !isToggled;
-        toggleNavlinks();
-      });
-    });
-  });
+
+  // Reactive state for mobile nav
+  let isOpen = $state(false);
+
+  const toggleNav = () => (isOpen = !isOpen);
+  const closeNav = () => (isOpen = false);
+
+  // Derived classes for dynamic UI based on state
+  const line1Class = $derived(
+    `m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300 ${
+      isOpen ? 'translate-y-1.5 rotate-45' : ''
+    }`
+  );
+  const line2Class = $derived(
+    `m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300 ${
+      isOpen ? '-translate-y-1 -rotate-45' : ''
+    }`
+  );
+  const navLayerClass = $derived(
+    `fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 dark:bg-gray-900/70 lg:hidden ${
+      isOpen ? 'origin-top scale-y-100' : ''
+    }`
+  );
+  const navLinksClass = $derived(
+    `invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none ${
+      isOpen ? '!visible !scale-100 !opacity-100 !lg:translate-y-0' : ''
+    }`
+  );
 </script>
 
 <header>
@@ -49,16 +49,23 @@
           </a>
 
           <div class="relative flex max-h-10 items-center lg:hidden">
-            <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6">
+            <button
+              aria-label="humburger"
+              id="hamburger"
+              aria-expanded={isOpen}
+              class="relative -mr-6 p-6"
+              onclick={toggleNav}
+              type="button"
+            >
               <div
                 aria-hidden="true"
                 id="line"
-                class="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"
+                class={line1Class}
               ></div>
               <div
                 aria-hidden="true"
                 id="line2"
-                class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"
+                class={line2Class}
               ></div>
             </button>
           </div>
@@ -66,11 +73,12 @@
         <div
           id="navLayer"
           aria-hidden="true"
-          class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 dark:bg-gray-900/70 lg:hidden"
+          class={navLayerClass}
+          onclick={closeNav}
         ></div>
         <div
           id="navlinks"
-          class="invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none"
+          class={navLinksClass}
         >
           <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
             <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
@@ -80,6 +88,7 @@
                     href={link.to}
                     target={link.target}
                     class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                    onclick={closeNav}
                   >
                     <span>{link.label}</span>
                   </a>
@@ -90,6 +99,7 @@
                   href="https://discord.gg/OpenShock"
                   target="_blank"
                   class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  onclick={closeNav}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -132,19 +142,3 @@
   </nav>
 </header>
 
-<style>
-  #toggle_nav:checked ~ div #hamburger #line {
-    @apply translate-y-1.5 rotate-45;
-  }
-
-  #toggle_nav:checked ~ div #hamburger #line2 {
-    @apply -translate-y-1 -rotate-45;
-  }
-
-  .toggled div:first-child {
-    @apply translate-y-1.5 rotate-45;
-  }
-  .toggled div:last-child {
-    @apply -translate-y-1 -rotate-45;
-  }
-</style>
