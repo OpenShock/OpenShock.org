@@ -57,29 +57,13 @@
               onclick={toggleNav}
               type="button"
             >
-              <div
-                aria-hidden="true"
-                id="line"
-                class={line1Class}
-              ></div>
-              <div
-                aria-hidden="true"
-                id="line2"
-                class={line2Class}
-              ></div>
+              <div aria-hidden="true" id="line" class={line1Class}></div>
+              <div aria-hidden="true" id="line2" class={line2Class}></div>
             </button>
           </div>
         </div>
-        <div
-          id="navLayer"
-          aria-hidden="true"
-          class={navLayerClass}
-          onclick={closeNav}
-        ></div>
-        <div
-          id="navlinks"
-          class={navLinksClass}
-        >
+        <div id="navLayer" aria-hidden="true" class={navLayerClass} onclick={closeNav}></div>
+        <div id="navlinks" class={navLinksClass}>
           <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
             <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
               {#each links as link}
@@ -141,4 +125,3 @@
     </Container>
   </nav>
 </header>
-

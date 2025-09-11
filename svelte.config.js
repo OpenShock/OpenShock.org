@@ -43,7 +43,7 @@ const config = {
   },
   version: {
     name: commitHash,
-  }
+  },
 };
 
 export default config;
