@@ -29,8 +29,36 @@ const config = {
       mode: 'hash',
       directives: {
         'default-src': ['self'],
-        'connect-src': ['self', 'https://cloudflareinsights.com'],
+
+        'connect-src': [
+          'self',
+          'https://*.openshock.app',
+          'https://*.openshock.org',
+          'https://github.com',
+          'https://api.github.com',
+          'https://cloudflareinsights.com',
+          'https://modrinth.com',
+        ],
+
+        'img-src': [
+          'self',
+          'data:',
+          'https://*.openshock.app',
+          'https://*.openshock.org',
+          'https://cdn-icons-png.flaticon.com',
+          'https://github.com',
+          'https://avatars.githubusercontent.com',
+        ],
+
         'script-src': ['self', 'https://static.cloudflareinsights.com'],
+
+        'style-src': [
+          'self',
+          'https://fonts.googleapis.com',
+          `'unsafe-inline'`, // Google Fonts styles hit this
+        ],
+
+        'font-src': ['self', 'https://fonts.gstatic.com'],
       },
     },
   },
