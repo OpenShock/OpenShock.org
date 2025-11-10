@@ -1,24 +1,29 @@
-# build output
-dist/
-.output/
+test-results
+node_modules
+playwright-report
 
-# dependencies
-node_modules/
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+# OS
 .DS_Store
-.vscode
-.vs
+Thumbs.db
+
+# IDE
 .idea
-.svelte-kit/
+
+# Env
+.env*.local
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Other package managers
+package-lock.json
+yarn.lock

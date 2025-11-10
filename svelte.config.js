@@ -37,9 +37,13 @@ const config = {
   vitePlugin: {
     inspector: mode === 'development',
   },
-  compilerOptions: {
-    runes: true,
-    modernAst: true,
+  csp: {
+    mode: 'hash',
+    directives: {
+      'default-src': ['self'],
+      'connect-src': ['self', 'https://cloudflareinsights.com'],
+      'script-src': ['self', 'https://static.cloudflareinsights.com'],
+    },
   },
   version: {
     name: commitHash,
