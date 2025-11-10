@@ -25,9 +25,6 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter(),
-  },
-  vitePlugin: {
-    inspector: mode === 'development',
     csp: {
       mode: 'hash',
       directives: {
@@ -36,6 +33,9 @@ const config = {
         'script-src': ['self', 'https://static.cloudflareinsights.com'],
       },
     },
+  },
+  vitePlugin: {
+    inspector: mode === 'development',
   },
   compilerOptions: {
     runes: true,

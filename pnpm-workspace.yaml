@@ -3,3 +3,4 @@ onlyBuiltDependencies:
   - sharp
   - svelte-preprocess
   - workerd
+  - '@tailwindcss/oxide'

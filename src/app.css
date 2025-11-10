@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* Global background to avoid plain white page and match prior brand feel */
 @layer base {
