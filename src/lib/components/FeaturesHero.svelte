@@ -2,7 +2,7 @@
   import Container from './Container.svelte';
 </script>
 
-<div id="integrations-hero" class="!mt-14">
+<div id="integrations-hero" class="mt-14!">
   <Container>
     <div>
       <h2 class="text-center font-bold text-gray-800 dark:text-white md:text-4xl">

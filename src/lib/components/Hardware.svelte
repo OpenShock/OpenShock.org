@@ -56,7 +56,7 @@
               >
             </div>
             <div class="w-5/6 flex">
-              <h3 class="font-semibold text-lg flex-grow">Do-It-Yourself Guides</h3>
+              <h3 class="font-semibold text-lg grow">Do-It-Yourself Guides</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -90,7 +90,7 @@
               >
             </div>
             <div class="w-5/6 flex">
-              <h3 class="font-semibold text-lg flex-grow">Prebuilt Vendor List</h3>
+              <h3 class="font-semibold text-lg grow">Prebuilt Vendor List</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
