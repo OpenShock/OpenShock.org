@@ -43,7 +43,7 @@
       <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
         <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
           <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
-            <img class="h-[36px]" src="/logo.svg" alt="OpenShock logo" />
+            <img class="h-9" src="/logo.svg" alt="OpenShock logo" />
           </a>
 
           <div class="relative flex max-h-10 items-center lg:hidden">
@@ -65,7 +65,7 @@
             'flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white dark:bg-[#181a1b] ' +
             'p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative ' +
             'lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none ' +
-            'lg:!bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none dark:border-gray-200 ' +
+            'lg:bg-transparent! lg:p-0 lg:opacity-100 lg:shadow-none dark:border-gray-200 ' +
             navLinksClass}
         >
           <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
@@ -113,7 +113,7 @@
             >
               <span class="relative text-sm font-semibold text-white"> OpenShock.app</span>
               <svg
-                class="ml-3 w-[16px] h-[16px] text-white z-[1]"
+                class="ml-3 size-4 text-white z-1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >

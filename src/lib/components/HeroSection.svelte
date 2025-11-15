@@ -8,10 +8,10 @@
     class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
   >
     <div
-      class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"
+      class="blur-[106px] h-56 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"
     ></div>
     <div
-      class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"
+      class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"
     ></div>
   </div>
   <Container>
@@ -31,7 +31,7 @@
           >
             <span class="relative text-base font-semibold text-white">OpenShock.app</span>
             <svg
-              class="ml-3 w-[16px] h-[16px] text-white z-[1]"
+              class="ml-3 size-4 text-white z-1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
@@ -44,7 +44,7 @@
           </a>
           <a
             href="https://wiki.openshock.org"
-            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
+            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-linear-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
           >
             <span class="relative text-base font-semibold text-primary dark:text-white">Wiki</span>
           </a>

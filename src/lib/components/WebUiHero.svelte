@@ -2,7 +2,7 @@
   import Container from './Container.svelte';
 </script>
 
-<div id="webui-hero" class="!mt-[5rem]">
+<div id="webui-hero" class="mt-20!">
   <Container>
     <div
       class="relative mx-auto max-w-6xl rounded-lg md:rounded-xl flex flex-col items-center text-center"
@@ -12,10 +12,10 @@
         class="absolute inset-0 h-1/4 w-full grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
       >
         <div
-          class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"
+          class="blur-[106px] h-56 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"
         ></div>
         <div
-          class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"
+          class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"
         ></div>
       </div>
       <div class="relative">
@@ -24,9 +24,9 @@
           style="width: calc(100% - 5px);"
         >
           <span
-            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite] bg-[conic-gradient(from_225deg_at_50%_50%,_theme(colors.transparent)_0%,_theme(colors.transparent)_92%,_theme(colors.zinc.500)_97%,_theme(colors.transparent)_100%)]"
+            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite] bg-[conic-gradient(from_225deg_at_50%_50%,theme(colors.transparent)_0%,theme(colors.transparent)_92%,var(--color-zinc-500)_97%,theme(colors.transparent)_100%)]"
           ></span><span
-            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite_8s] bg-[conic-gradient(from_225deg_at_50%_50%,_theme(colors.transparent)_0%,_theme(colors.transparent)_92%,_theme(colors.zinc.500)_97%,_theme(colors.transparent)_100%)]"
+            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite_8s] bg-[conic-gradient(from_225deg_at_50%_50%,theme(colors.transparent)_0%,theme(colors.transparent)_92%,var(--color-zinc-500)_97%,theme(colors.transparent)_100%)]"
           ></span>
           <img
             class="rounded-[inherit]"
@@ -39,7 +39,7 @@
 
       <div
         style="z-index: 2;"
-        class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900"
+        class="absolute inset-0 flex items-center justify-center bg-linear-to-b from-transparent to-gray-900"
       >
         <a
           href="https://openshock.app"
@@ -47,7 +47,7 @@
           target="_blank"
           class="group overflow-hidden rounded-full border border-zinc-500/10 bg-zinc-500/10 shadow-xl backdrop-blur-md transition hover:scale-110"
           ><div
-            class="m-4 flex items-center justify-center rounded-full border border-zinc-500/90 bg-gradient-to-b from-zinc-500/50 to-zinc-900/10 p-6 text-primary shadow-xl backdrop-blur-md transition group-hover:scale-105"
+            class="m-4 flex items-center justify-center rounded-full border border-zinc-500/90 bg-linear-to-b from-zinc-500/50 to-zinc-900/10 p-6 text-primary shadow-xl backdrop-blur-md transition group-hover:scale-105"
           >
             <svg viewBox="0 0 24 24" width="1.2em" height="1.2em"
               ><path
