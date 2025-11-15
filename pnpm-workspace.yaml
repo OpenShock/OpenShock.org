@@ -1,6 +1,0 @@
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - svelte-preprocess
-  - workerd
-  - '@tailwindcss/oxide'

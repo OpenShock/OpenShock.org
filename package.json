@@ -47,6 +47,18 @@
 	},
 	"engines": {
 		"node": ">=24.7.0",
-		"pnpm": ">=10.5.0"
+		"pnpm": ">=10.22.0"
+	},
+	"volta": {
+		"node": "24.7.0"
+	},
+	"packageManager": "pnpm@10.22.0",
+	"pmpm": {
+		"onlyBuiltDependencies": [
+			"@tailwindcss/oxide",
+			"esbuild",
+			"sharp",
+			"workerd"
+		]
 	}
 }
