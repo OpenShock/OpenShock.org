@@ -8,6 +8,18 @@
   --color-primary: #e14a6d;
   --color-secondary: #6735a5;
   --color-info: #0c63e7;
+
+  --color-gray-50: #f2f1fc;
+  --color-gray-100: #eae6f9;
+  --color-gray-200: #d8d1f4;
+  --color-gray-300: #c2b5ec;
+  --color-gray-400: #ae96e3;
+  --color-gray-500: #9f7cd8;
+  --color-gray-600: #9162c9;
+  --color-gray-700: #7f52b0;
+  --color-gray-800: #66458e;
+  --color-gray-900: #18141c;
+
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
