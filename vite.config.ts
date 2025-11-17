@@ -2,7 +2,8 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { playwright } from '@vitest/browser-playwright';
-import { defineConfig } from 'vite';
+import license from 'rollup-plugin-license';
+import { type PluginOption, defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production';
@@ -11,7 +12,20 @@ export default defineConfig(({ mode }) => {
     build: {
       target: 'es2022',
     },
-    plugins: [tailwindcss(), sveltekit()],
+    plugins: [
+      tailwindcss(),
+      sveltekit(),
+      license({
+        thirdParty: {
+          includePrivate: true,
+          includeSelf: true,
+          multipleVersions: true,
+          output: {
+            file: './.svelte-kit/output/client/LICENSES.txt', // TODO: This seems like a hack, check if theres a better way...
+          },
+        },
+      }) as PluginOption,
+    ],
     test: {
       expect: { requireAssertions: true },
       projects: [
