@@ -2,7 +2,7 @@
   import Container from './Container.svelte';
 </script>
 
-<div id="webui-hero" class="mt-20!">
+<div id="webui-hero">
   <Container>
     <div
       class="relative mx-auto max-w-6xl rounded-lg md:rounded-xl flex flex-col items-center text-center"

@@ -6,7 +6,7 @@
   import WebUiHero from '$lib/components/WebUiHero.svelte';
 </script>
 
-<main class="space-y-40 mb-40">
+<main class="space-y-20 mb-40">
   <HeroSection />
   <WebUiHero />
   <FeaturesHero />
