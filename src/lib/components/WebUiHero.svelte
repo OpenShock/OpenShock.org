@@ -24,9 +24,9 @@
           style="width: calc(100% - 5px);"
         >
           <span
-            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite] bg-[conic-gradient(from_225deg_at_50%_50%,theme(colors.transparent)_0%,theme(colors.transparent)_92%,var(--color-zinc-500)_97%,theme(colors.transparent)_100%)]"
+            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite] bg-[conic-gradient(from_225deg_at_50%_50%,#00000000_0%,#00000000_92%,var(--color-zinc-500)_97%,#00000000_100%)]"
           ></span><span
-            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite_8s] bg-[conic-gradient(from_225deg_at_50%_50%,theme(colors.transparent)_0%,theme(colors.transparent)_92%,var(--color-zinc-500)_97%,theme(colors.transparent)_100%)]"
+            class="absolute inset-[-1000%] animate-[spin_16s_linear_infinite_8s] bg-[conic-gradient(from_225deg_at_50%_50%,#00000000_0%,#00000000_92%,var(--color-zinc-500)_97%,#00000000_100%)]"
           ></span>
           <img
             class="rounded-[inherit]"
