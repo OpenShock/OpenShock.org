@@ -37,11 +37,11 @@
             >community vendors</a
           > for more information.
         </p>
-        <div class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
+        <div class="space-y-4">
           <a
             target="_blank"
             href="https://wiki.openshock.org/diy/assembling/"
-            class="cursor-pointer mt-8 flex gap-4 md:items-center hover:text-primary transition duration-300"
+            class="cursor-pointer my-4 flex gap-4 md:items-center hover:text-primary transition duration-300"
           >
             <div class="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20">
               <svg
@@ -56,7 +56,7 @@
               >
             </div>
             <div class="w-5/6 flex">
-              <h3 class="font-semibold text-lg flex-grow">Do-It-Yourself Guides</h3>
+              <h3 class="font-semibold text-lg grow">Do-It-Yourself Guides</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -72,10 +72,12 @@
             </div>
           </a>
 
+          <div class="border border-gray-100 dark:border-gray-800"></div>
+
           <a
             target="_blank"
             href="https://wiki.openshock.org/vendors/hardware/"
-            class="cursor-pointer pt-4 flex gap-4 md:items-center hover:text-primary transition duration-300"
+            class="cursor-pointer my-4 flex gap-4 md:items-center hover:text-primary transition duration-300"
           >
             <div class="w-12 h-12 flex gap-4 rounded-full bg-teal-100 dark:bg-teal-900/20">
               <svg
@@ -90,7 +92,7 @@
               >
             </div>
             <div class="w-5/6 flex">
-              <h3 class="font-semibold text-lg flex-grow">Prebuilt Vendor List</h3>
+              <h3 class="font-semibold text-lg grow">Prebuilt Vendor List</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

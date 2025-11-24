@@ -18,21 +18,49 @@ function getGitHash() {
 
   return child_process.execSync('git rev-parse HEAD').toString().trim();
 }
-function getGitBranch() {
-  if (isGithubActions) return process.env.GITHUB_REF_NAME;
-  if (isCloudflare) return process.env.CF_BRANCH;
-  if (isDocker) return process.env.GIT_BRANCH;
-
-  return child_process.execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
-}
 
 const commitHash = getGitHash();
-const branchName = getGitBranch();
 
 const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter(),
+    csp: {
+      mode: 'hash',
+      directives: {
+        'default-src': ['self'],
+
+        'connect-src': [
+          'self',
+          'https://*.openshock.app',
+          'https://*.openshock.org',
+          'https://github.com',
+          'https://api.github.com',
+          'https://cloudflareinsights.com',
+          'https://modrinth.com',
+        ],
+
+        'img-src': [
+          'self',
+          'data:',
+          'https://*.openshock.app',
+          'https://*.openshock.org',
+          'https://cdn-icons-png.flaticon.com',
+          'https://github.com',
+          'https://avatars.githubusercontent.com',
+        ],
+
+        'script-src': ['self', 'https://static.cloudflareinsights.com'],
+
+        'style-src': [
+          'self',
+          'https://fonts.googleapis.com',
+          `'unsafe-inline'`, // Google Fonts styles hit this
+        ],
+
+        'font-src': ['self', 'https://fonts.gstatic.com'],
+      },
+    },
   },
   vitePlugin: {
     inspector: mode === 'development',

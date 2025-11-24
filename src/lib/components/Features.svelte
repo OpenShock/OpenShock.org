@@ -32,7 +32,7 @@
       class="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border border-gray-100 text-gray-600 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4"
     >
       <div
-        class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+        class="group relative bg-white dark:bg-gray-800 transition hover:z-1 hover:shadow-2xl hover:shadow-gray-600/10"
       >
         <div class="relative space-y-8 py-12 p-8">
           <img
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div
-        class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+        class="group relative bg-white dark:bg-gray-800 transition hover:z-1 hover:shadow-2xl hover:shadow-gray-600/10"
       >
         <div class="relative space-y-8 py-12 p-8">
           <img
@@ -116,7 +116,7 @@
         </div>
       </div>
       <div
-        class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+        class="group relative bg-white dark:bg-gray-800 transition hover:z-1 hover:shadow-2xl hover:shadow-gray-600/10"
       >
         <div class="relative space-y-8 py-12 p-8">
           <img
@@ -159,7 +159,7 @@
         </div>
       </div>
       <div
-        class="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+        class="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-1 hover:shadow-2xl hover:shadow-gray-600/10"
       >
         <div
           class="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800"
