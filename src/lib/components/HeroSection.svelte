@@ -54,7 +54,7 @@
             <h6 class="text-lg font-semibold text-gray-700 dark:text-white">Easy to Use</h6>
             <p class="mt-2 text-gray-500">Simple & easy to use web ui</p>
           </a>
-          <a target="_blank" href="https://wiki.openshock.org/diy/assembling/" class="text-left">
+          <a target="_blank" href="https://wiki.openshock.org/guides/diy/" class="text-left">
             <h6 class="text-lg font-semibold text-gray-700 dark:text-white">
               Cheap & Easy Do-It-Yourself
             </h6>
