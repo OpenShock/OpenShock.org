@@ -28,8 +28,7 @@
           microcontrollers that can combied with a 443Mhz Transmitter to be used to control
           shockers.
           <br /><br />
-          You can build your own OpenShock Hub and integrate them with OpenShock by using our custom
-          firmware.
+          You can build your own OpenShock Hub and integrate them with OpenShock by using our custom firmware.
 
           <br /><br />
           Our community also provides pre-built OpenShock Hubs for sale. Checkout the

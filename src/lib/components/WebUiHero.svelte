@@ -1,4 +1,5 @@
 <script>
+  import { asset } from '$app/paths';
   import Container from './Container.svelte';
 </script>
 
@@ -32,7 +33,7 @@
             class="rounded-[inherit]"
             alt="Shockers"
             style="z-index: 1;"
-            src="/images/webui/shockers.webp"
+            src={asset('/images/webui/shockers.webp')}
           />
         </div>
       </div>

@@ -2,9 +2,6 @@
   import Container from './Container.svelte';
 </script>
 
-<h2 class="mx-auto text-center text-xl text-zinc-500">
-  This site is WIP, please share feedback with us if you have any!
-</h2>
 <footer class="py-20 md:py-40">
   <Container>
     <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
@@ -84,11 +81,6 @@
           </ul>
         </div>
         <div class="m-auto mt-16 w-10/12 space-y-6 text-center sm:mt-auto sm:w-5/12 sm:text-left">
-          <span class="block text-gray-500 dark:text-gray-400"
-            >OpenShock is an open-source platform designed to control various shocking devices over
-            the internet, catering to all your masochistic needs!</span
-          >
-
           <span class="block text-gray-500 dark:text-gray-400"
             >OpenShock Team<span id="year"></span></span
           >
