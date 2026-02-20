@@ -178,7 +178,7 @@
       <div
         class="mt-16 flex flex-col items-center justify-between gap-6 border-t border-gray-200/40 dark:border-gray-800/60 pt-8 text-sm text-gray-500 dark:text-gray-400 sm:flex-row"
       >
-        <span>AGPL-3.0 OpenShock Team {year}</span>
+        <span class="flex-1">AGPL-3.0 OpenShock Team {year}</span>
 
         <a
           href="https://cloudflare.com"
@@ -190,9 +190,11 @@
           <CloudflareLogo class="h-6 w-auto -my-1" />
         </a>
 
-        <a href="mailto:admin@openshock.org" class="transition hover:text-primary">
-          admin@openshock.org
-        </a>
+        <div class="flex flex-1 justify-end">
+          <a href="mailto:admin@openshock.org" class="transition hover:text-primary">
+            admin@openshock.org
+          </a>
+        </div>
       </div>
     </div>
   </Container>
