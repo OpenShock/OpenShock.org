@@ -1,4 +1,5 @@
 <script>
+  import { assets } from '$app/paths';
   import Container from './Container.svelte';
 </script>
 
@@ -17,7 +18,7 @@
       <div class="mt-12 grid grid-cols-2 sm:grid-cols-4">
         <a class="p-4" target="_blank" href="https://github.com/OpenShock/ShockOSC">
           <img
-            src="./images/games/VRC_Logo.png"
+            src="{assets}/images/games/VRC_Logo.png"
             class="h-12 w-auto mx-auto"
             loading="lazy"
             alt="client logo"
@@ -27,7 +28,7 @@
         </a>
         <a class="p-4 grayscale" target="_blank" href="https://github.com/OpenShock/ShockOSC">
           <img
-            src="./images/games/CVR-white-small.png"
+            src="{assets}/images/games/CVR-white-small.png"
             class="h-12 w-auto mx-auto"
             loading="lazy"
             alt="client logo"
@@ -41,7 +42,7 @@
           href="https://modrinth.com/mod/shockcraft"
         >
           <img
-            src="./images/games/Minecraft_franchise_logo.svg"
+            src="{assets}/images/games/Minecraft_franchise_logo.svg"
             class="h-9 w-auto m-auto"
             loading="lazy"
             alt="client logo"
@@ -51,7 +52,7 @@
         </a>
         <!--<a class="p-4 grayscale transition duration-200 hover:grayscale-0" target="_blank" href="https://github.com/OpenShock/Integrations.Twitch">
           <img
-            src="./images/games/twitch_wordmark_extruded_purple.png"
+            src="{assets}/images/games/twitch_wordmark_extruded_purple.png"
             class="h-12 w-auto mx-auto"
             loading="lazy"
             alt="client logo"
@@ -61,7 +62,7 @@
         </a>-->
         <a class="p-4 flex" target="_blank" href="https://github.com/OpenShock/DiscordBot">
           <img
-            src="./images/games/discord-logo-white.svg"
+            src="{assets}/images/games/discord-logo-white.svg"
             class="h-8 w-auto m-auto"
             loading="lazy"
             alt="client logo"

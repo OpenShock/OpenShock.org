@@ -1,4 +1,5 @@
 <script>
+  import { assets } from '$app/paths';
   import CloudflareLogo from './CloudflareLogo.svelte';
   import Container from './Container.svelte';
 
@@ -18,7 +19,7 @@
         <!-- Brand column (spans full width on mobile) -->
         <div class="col-span-2 md:col-span-1 space-y-6">
           <a href="/#home" class="inline-flex items-center space-x-2">
-            <img class="h-8" src="/logo.svg" alt="OpenShock logo" />
+            <img class="h-8" src="{assets}/logo.svg" alt="OpenShock logo" />
           </a>
           <p class="text-sm leading-relaxed text-gray-500 dark:text-gray-400 max-w-xs">
             Open-source shock collar platform. Free, self-hostable, and community-driven.

@@ -1,4 +1,5 @@
 <script>
+  import { assets } from '$app/paths';
   import Container from './Container.svelte';
 </script>
 
@@ -36,7 +37,7 @@
       >
         <div class="relative space-y-8 py-12 p-8">
           <img
-            src="/images/features/speed-64.png"
+            src="{assets}/images/features/speed-64.png"
             class="w-12"
             width="512"
             height="512"
@@ -77,7 +78,7 @@
       >
         <div class="relative space-y-8 py-12 p-8">
           <img
-            src="/images/features/dashboard-96.png"
+            src="{assets}/images/features/dashboard-96.png"
             class="w-12"
             width="512"
             height="512"
@@ -120,7 +121,7 @@
       >
         <div class="relative space-y-8 py-12 p-8">
           <img
-            src="/images/features/controller-96.png"
+            src="{assets}/images/features/controller-96.png"
             class="w-12"
             width="512"
             height="512"

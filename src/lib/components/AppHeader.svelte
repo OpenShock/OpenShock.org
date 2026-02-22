@@ -1,4 +1,5 @@
 <script>
+  import { assets } from '$app/paths';
   import Container from './Container.svelte';
 
   // Nav links config
@@ -43,7 +44,7 @@
       <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
         <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
           <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
-            <img class="h-9" src="/logo.svg" alt="OpenShock logo" />
+            <img class="h-9" src="{assets}/logo.svg" alt="OpenShock logo" />
           </a>
 
           <div class="relative flex max-h-10 items-center lg:hidden">

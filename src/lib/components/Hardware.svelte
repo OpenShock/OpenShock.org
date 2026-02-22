@@ -1,17 +1,18 @@
 <script>
+  import { assets } from '$app/paths';
   import Container from './Container.svelte';
 </script>
 
 <div id="hardware">
   <Container>
-    <img src="/icons/chip.webp" alt="chip" class="w-6 h-6" />
+    <img src="{assets}/icons/chip.webp" alt="chip" class="w-6 h-6" />
 
     <div
       class="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center"
     >
       <div class="md:5/12 lg:w-1/2 transition duration-700 hover:scale-105">
         <img
-          src="/images/OpenShockCoreV2CasePink.webp"
+          src="{assets}/images/OpenShockCoreV2CasePink.webp"
           alt="OpenShock hub"
           loading="lazy"
           width=""
@@ -39,7 +40,7 @@
         <div class="space-y-4">
           <a
             target="_blank"
-            href="https://wiki.openshock.org/diy/assembling/"
+            href="https://wiki.openshock.org/guides/diy/"
             class="cursor-pointer my-4 flex gap-4 md:items-center hover:text-primary transition duration-300"
           >
             <div class="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20">
@@ -60,7 +61,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-[28px] h-[28px] -translate-x-4 text-2xl transition duration-300 group/a-hover:text-primary"
+                class="w-7 h-7 -translate-x-4 text-2xl transition duration-300 group/a-hover:text-primary"
               >
                 <path
                   fill-rule="evenodd"
@@ -96,7 +97,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-[28px] h-[28px] -translate-x-4 text-2xl transition duration-300 group/b-hover:text-primary"
+                class="w-7 h-7 -translate-x-4 text-2xl transition duration-300 group/b-hover:text-primary"
               >
                 <path
                   fill-rule="evenodd"
