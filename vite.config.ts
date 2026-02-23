@@ -1,4 +1,5 @@
 /// <reference types="vitest/config" />
+import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { playwright } from '@vitest/browser-playwright';
@@ -13,6 +14,7 @@ export default defineConfig(({ mode }) => {
       target: 'es2022',
     },
     plugins: [
+      enhancedImages(),
       tailwindcss(),
       sveltekit(),
       license({
