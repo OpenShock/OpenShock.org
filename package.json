@@ -49,17 +49,6 @@
 		"node": ">=26.3.0"
 	},
 	"packageManager": "pnpm@11.6.0",
-	"pmpm": {
-		"onlyBuiltDependencies": [
-			"@tailwindcss/oxide",
-			"esbuild",
-			"sharp",
-			"workerd"
-		],
-		"overrides": {
-			"cookie@<0.7.0": ">=0.7.0"
-		}
-	},
 	"dependencies": {
 		"@lucide/svelte": "^1.18.0",
 		"bits-ui": "2.18.1",
