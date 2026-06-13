@@ -54,11 +54,10 @@ const config = {
 
         'style-src': [
           'self',
-          'https://fonts.googleapis.com',
-          `'unsafe-inline'`, // Google Fonts styles hit this
+          `'unsafe-inline'`, // inline style attributes (e.g. data-sveltekit wrapper)
         ],
 
-        'font-src': ['self', 'https://fonts.gstatic.com'],
+        'font-src': ['self'],
       },
     },
   },

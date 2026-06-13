@@ -128,6 +128,7 @@
                   <a
                     href={currentPartner.link}
                     target="_blank"
+                    rel="external"
                     class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
                   >
                     Visit {currentPartner.name}
@@ -164,6 +165,7 @@
                   <a
                     href={currentPartner.link}
                     target="_blank"
+                    rel="external"
                     class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
                   >
                     Visit {currentPartner.name}
@@ -176,7 +178,7 @@
 
           <!-- Dots -->
           <div class="flex justify-center gap-2 py-3">
-            {#each partners as _, i}
+            {#each partners as partner, i (partner.id)}
               <button
                 aria-label="Image stepper"
                 type="button"

@@ -1,13 +1,6 @@
 <script>
-  import { assets } from '$app/paths';
+  import { asset } from '$app/paths';
   import Container from './Container.svelte';
-
-  // Nav links config
-  const links = [
-    { to: '/#features', label: 'Features' },
-    { to: '/#hardware', label: 'Hardware' },
-    { to: 'https://wiki.openshock.org', label: 'Wiki', target: '_blank' },
-  ];
 
   // Reactive state for mobile nav
   let isOpen = $state(false);
@@ -43,8 +36,13 @@
     <Container>
       <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
         <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
-          <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
-            <img class="h-9" src="{assets}/logo.svg" alt="OpenShock logo" />
+          <a href="#home" aria-label="logo" class="flex items-center space-x-2">
+            <img
+              class="h-9"
+              src={asset('/branding/Logo/NavbarLogoSpin.svg')}
+              alt="OpenShock logo"
+              fetchpriority="high"
+            />
           </a>
 
           <div class="relative flex max-h-10 items-center lg:hidden">
@@ -71,18 +69,34 @@
         >
           <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
             <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
-              {#each links as link}
-                <li>
-                  <a
-                    href={link.to}
-                    target={link.target}
-                    class="hover:text-primary block transition dark:hover:text-white md:px-4"
-                    onclick={closeNav}
-                  >
-                    <span>{link.label}</span>
-                  </a>
-                </li>
-              {/each}
+              <li>
+                <a
+                  href="#features"
+                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  onclick={closeNav}
+                >
+                  <span>Features</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#hardware"
+                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  onclick={closeNav}
+                >
+                  <span>Hardware</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wiki.openshock.org"
+                  target="_blank"
+                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  onclick={closeNav}
+                >
+                  <span>Wiki</span>
+                </a>
+              </li>
               <li>
                 <a
                   href="https://discord.gg/OpenShock"

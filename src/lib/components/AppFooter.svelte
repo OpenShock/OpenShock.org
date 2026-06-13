@@ -1,5 +1,5 @@
 <script>
-  import { assets } from '$app/paths';
+  import { asset } from '$app/paths';
   import CloudflareLogo from './CloudflareLogo.svelte';
   import Container from './Container.svelte';
 
@@ -9,7 +9,7 @@
 <footer class="relative border-t border-gray-200/40 dark:border-gray-800/60">
   <!-- Top gradient accent line -->
   <div
-    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-primary via-secondary to-transparent"
+    class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-primary via-secondary to-transparent"
   ></div>
 
   <Container>
@@ -18,8 +18,8 @@
       <div class="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 lg:gap-x-12">
         <!-- Brand column (spans full width on mobile) -->
         <div class="col-span-2 md:col-span-1 space-y-6">
-          <a href="/#home" class="inline-flex items-center space-x-2">
-            <img class="h-8" src="{assets}/logo.svg" alt="OpenShock logo" />
+          <a href="#home" class="inline-flex items-center space-x-2">
+            <img class="h-8" src={asset('/branding/Logo/Logo.svg')} alt="OpenShock logo" />
           </a>
           <p class="text-sm leading-relaxed text-gray-500 dark:text-gray-400 max-w-xs">
             Open-source shock collar platform. Free, self-hostable, and community-driven.
@@ -82,9 +82,9 @@
             Product
           </h3>
           <ul class="space-y-3 text-sm text-gray-500 dark:text-gray-400">
-            <li><a href="/#home" class="transition hover:text-primary">Home</a></li>
-            <li><a href="/#features" class="transition hover:text-primary">Features</a></li>
-            <li><a href="/#hardware" class="transition hover:text-primary">Hardware</a></li>
+            <li><a href="#home" class="transition hover:text-primary">Home</a></li>
+            <li><a href="#features" class="transition hover:text-primary">Features</a></li>
+            <li><a href="#hardware" class="transition hover:text-primary">Hardware</a></li>
             <li>
               <a href="https://openshock.app" target="_blank" class="transition hover:text-primary">
                 OpenShock.app
