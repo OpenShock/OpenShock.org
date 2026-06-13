@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ArrowRight } from '@lucide/svelte';
   import { asset } from '$app/paths';
+  import { Card } from '$lib/components/ui/card';
   import { fade } from 'svelte/transition';
   import CloudflareLogo from './CloudflareLogo.svelte';
   import Container from './Container.svelte';
@@ -90,9 +91,7 @@
 
       <!-- Right: partner card -->
       <div class="w-full lg:w-7/12">
-        <div
-          class="overflow-hidden rounded-2xl border border-gray-200/60 bg-white/5 backdrop-blur-sm dark:border-gray-700/40"
-        >
+        <Card class="gap-0 py-0">
           {#key currentIndex}
             <div in:fade={{ duration: 220 }}>
               {#if partners[currentIndex].banner}
@@ -188,7 +187,7 @@
               style="--duration: {timerDuration}ms"
             ></div>
           {/key}
-        </div>
+        </Card>
       </div>
     </div>
   </Container>

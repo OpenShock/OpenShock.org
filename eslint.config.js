@@ -37,5 +37,9 @@ export default defineConfig(
         svelteConfig,
       },
     },
+  },
+  {
+    // Vendored shadcn-svelte primitives — kept verbatim, linted upstream
+    ignores: ['src/lib/components/ui'],
   }
 );

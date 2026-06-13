@@ -1,4 +1,5 @@
 <script>
+  import { Button } from '$lib/components/ui/button';
   import Container from './Container.svelte';
   import BrowserIcon from './icons/BrowserIcon.svelte';
   import CodeIcon from './icons/CodeIcon.svelte';
@@ -28,29 +29,30 @@
         </p>
 
         <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-          <a
+          <Button
             href="https://wiki.openshock.org/vendors/hardware/"
             target="_blank"
-            class="relative flex h-11 w-full items-center justify-center gap-2 px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary before:bg-linear-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+            size="lg"
+            class="h-11 w-full px-6 text-base sm:w-max"
           >
-            <StoreIcon class="relative size-4 text-primary dark:text-white" />
-            <span class="relative text-base font-semibold text-primary dark:text-white"
-              >Buy Hardware</span
-            >
-          </a>
-          <a
+            <StoreIcon class="size-4" />
+            Buy Hardware
+          </Button>
+          <Button
             href="https://wiki.openshock.org"
-            class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-linear-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 sm:w-max"
+            variant="outline"
+            size="lg"
+            class="h-11 w-full px-6 text-base sm:w-max"
           >
-            <span class="relative text-base font-semibold text-primary dark:text-white">Wiki</span>
-          </a>
+            Wiki
+          </Button>
         </div>
 
         <div class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <a
             href="https://openshock.app"
             target="_blank"
-            class="group flex flex-col gap-4 rounded-2xl border border-gray-200/60 bg-white/5 p-4 text-left backdrop-blur-sm transition duration-300 hover:border-indigo-300/60 hover:bg-white/10 dark:border-gray-700/30 dark:bg-transparent dark:hover:border-indigo-700/60"
+            class="group flex flex-col gap-4 rounded-xl bg-card p-4 text-left ring-1 ring-foreground/10 transition duration-300 hover:bg-accent/50"
           >
             <div
               class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-900/30"
@@ -68,7 +70,7 @@
           <a
             href="https://wiki.openshock.org/guides/diy/"
             target="_blank"
-            class="group flex flex-col gap-4 rounded-2xl border border-gray-200/60 bg-white/5 p-4 text-left backdrop-blur-sm transition duration-300 hover:border-teal-300/60 hover:bg-white/10 dark:border-gray-700/30 dark:bg-transparent dark:hover:border-teal-700/60"
+            class="group flex flex-col gap-4 rounded-xl bg-card p-4 text-left ring-1 ring-foreground/10 transition duration-300 hover:bg-accent/50"
           >
             <div
               class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900/30"
@@ -86,7 +88,7 @@
           <a
             href="https://api.openshock.app/scalar/viewer"
             target="_blank"
-            class="group flex flex-col gap-4 rounded-2xl border border-gray-200/60 bg-white/5 p-4 text-left backdrop-blur-sm transition duration-300 hover:border-violet-300/60 hover:bg-white/10 dark:border-gray-700/30 dark:bg-transparent dark:hover:border-violet-700/60"
+            class="group flex flex-col gap-4 rounded-xl bg-card p-4 text-left ring-1 ring-foreground/10 transition duration-300 hover:bg-accent/50"
           >
             <div
               class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 dark:bg-violet-900/30"

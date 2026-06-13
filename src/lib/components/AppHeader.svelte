@@ -1,5 +1,6 @@
 <script>
   import { asset } from '$app/paths';
+  import { Button } from '$lib/components/ui/button';
   import Container from './Container.svelte';
   import DiscordIcon from './icons/DiscordIcon.svelte';
   import ExternalLinkIcon from './icons/ExternalLinkIcon.svelte';
@@ -114,13 +115,10 @@
           </div>
 
           <div class="mt-12 lg:mt-0">
-            <a
-              href="https://openshock.app"
-              class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-            >
-              <span class="relative text-sm font-semibold text-white"> OpenShock.app</span>
-              <ExternalLinkIcon class="ml-3 size-4 text-white z-1" />
-            </a>
+            <Button href="https://openshock.app" class="h-9 w-full px-4 sm:w-max">
+              OpenShock.app
+              <ExternalLinkIcon class="size-4" />
+            </Button>
           </div>
         </div>
       </div>

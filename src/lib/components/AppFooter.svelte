@@ -12,7 +12,7 @@
 <footer class="relative border-t border-gray-200/40 dark:border-gray-800/60">
   <!-- Top gradient accent line -->
   <div
-    class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-primary via-secondary to-transparent"
+    class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-primary via-brand to-transparent"
   ></div>
 
   <Container>
