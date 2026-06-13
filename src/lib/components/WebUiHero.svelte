@@ -1,6 +1,7 @@
 <script>
   import { asset } from '$app/paths';
   import Container from './Container.svelte';
+  import ArrowUpRightIcon from './icons/ArrowUpRightIcon.svelte';
 </script>
 
 <div id="webui-hero">
@@ -50,16 +51,7 @@
           ><div
             class="m-4 flex items-center justify-center rounded-full border border-zinc-500/90 bg-linear-to-b from-zinc-500/50 to-zinc-900/10 p-6 text-primary shadow-xl backdrop-blur-md transition group-hover:scale-105"
           >
-            <svg viewBox="0 0 24 24" width="1.2em" height="1.2em"
-              ><path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M7 7h10v10M7 17L17 7"
-              ></path></svg
-            >
+            <ArrowUpRightIcon />
           </div></a
         >
       </div>

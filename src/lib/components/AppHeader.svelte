@@ -1,6 +1,8 @@
 <script>
   import { asset } from '$app/paths';
   import Container from './Container.svelte';
+  import DiscordIcon from './icons/DiscordIcon.svelte';
+  import ExternalLinkIcon from './icons/ExternalLinkIcon.svelte';
 
   // Reactive state for mobile nav
   let isOpen = $state(false);
@@ -104,17 +106,7 @@
                   class="hover:text-primary block transition dark:hover:text-white md:px-4"
                   onclick={closeNav}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 inline-block mr-1"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 127.14 96.36"
-                    ><path
-                      fill="currentColor"
-                      d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"
-                    ></path></svg
-                  >
+                  <DiscordIcon class="w-5 inline-block mr-1" />
                   <span>Discord</span>
                 </a>
               </li>
@@ -127,16 +119,7 @@
               class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
             >
               <span class="relative text-sm font-semibold text-white"> OpenShock.app</span>
-              <svg
-                class="ml-3 size-4 text-white z-1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
-                /></svg
-              >
+              <ExternalLinkIcon class="ml-3 size-4 text-white z-1" />
             </a>
           </div>
         </div>
