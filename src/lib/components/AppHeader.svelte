@@ -4,6 +4,7 @@
   import Container from './Container.svelte';
   import DiscordIcon from './icons/DiscordIcon.svelte';
   import ExternalLinkIcon from './icons/ExternalLinkIcon.svelte';
+  import ThemeToggle from './ThemeToggle.svelte';
 
   // Reactive state for mobile nav
   let isOpen = $state(false);
@@ -31,10 +32,10 @@
 
 <header>
   <nav
-    class="sticky top-0 z-10 w-full border-b border-black/5 dark:border-white/5 lg:border-transparent"
+    class="absolute z-10 w-full border-b border-black/5 dark:border-white/5 lg:border-transparent"
   >
     <Container>
-      <div class="relative flex items-center justify-between py-4 md:py-0">
+      <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
         <a href="/" aria-label="logo" class="flex items-center space-x-2 shrink-0">
           <img
             class="h-9"
@@ -49,7 +50,7 @@
           class="hidden lg:flex lg:items-center lg:gap-8"
         >
           <div class="text-gray-600 dark:text-gray-200">
-            <ul class="flex gap-8 text-sm">
+            <ul class="flex gap-8 text-sm items-center">
               <li>
                 <a
                   href="/#features"
@@ -96,6 +97,9 @@
                 >
                   <DiscordIcon class="w-5 inline-block" />
                 </a>
+              </li>
+              <li>
+                <ThemeToggle />
               </li>
             </ul>
           </div>
