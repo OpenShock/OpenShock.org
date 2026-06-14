@@ -34,7 +34,7 @@
             class="rounded-[inherit]"
             alt="Shockers"
             style="z-index: 1;"
-            src={asset('/images/webui/shockers.webp')}
+            src={asset('/images/frontend/dark/shockers-page.webp')}
           />
         </div>
       </div>
