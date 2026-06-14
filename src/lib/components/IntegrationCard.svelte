@@ -19,7 +19,7 @@
   href={githubUrl}
   target="_blank"
   rel="noopener noreferrer"
-  class="group relative overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+  class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:shadow-xl hover:shadow-gray-600/10 dark:border-gray-800 dark:bg-gray-900"
 >
   <!-- Image Section -->
   {#if image}
@@ -42,12 +42,12 @@
     </div>
 
     <!-- Title -->
-    <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
+    <h3 class="mb-2 text-lg font-bold text-gray-800 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
       {name}
     </h3>
 
     <!-- Description -->
-    <p class="mb-4 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
+    <p class="mb-4 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
       {description}
     </p>
 
@@ -55,7 +55,7 @@
     {#if tags.length > 0}
       <div class="mb-4 flex flex-wrap gap-2">
         {#each tags as tag (tag)}
-          <span class="inline-block rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-200">
+          <span class="inline-block rounded-md bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
             {tag}
           </span>
         {/each}
@@ -63,7 +63,7 @@
     {/if}
 
     <!-- Footer -->
-    <div class="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-700">
+    <div class="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-800">
       <p class="text-xs text-gray-500 dark:text-gray-400">
         by <span class="font-semibold text-gray-700 dark:text-gray-300">{author}</span>
       </p>
