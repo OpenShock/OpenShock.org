@@ -41,7 +41,7 @@
 
       <div
         style="z-index: 2;"
-        class="absolute inset-0 flex items-center justify-center bg-linear-to-b from-transparent to-gray-900"
+        class="absolute inset-0 flex items-center justify-center bg-[linear-gradient(to_bottom,transparent_60%,var(--background)_95%)]"
       >
         <a
           href="https://openshock.app"
