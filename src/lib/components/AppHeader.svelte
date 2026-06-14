@@ -37,98 +37,149 @@
     class="sticky top-0 z-10 w-full border-b border-black/5 dark:border-white/5 lg:border-transparent"
   >
     <Container>
-      <div class="relative flex flex-wrap items-center justify-between gap-6 py-0 md:gap-0 md:py-0">
-        <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
-          <a href="/" aria-label="logo" class="flex items-center space-x-2">
-            <img
-              class="h-9"
-              src={asset('/branding/Logo/NavbarLogoSpin.svg')}
-              alt="OpenShock logo"
-              fetchpriority="high"
-            />
-          </a>
+      <div class="relative flex items-center justify-between py-4 md:py-0">
+        <a href="/" aria-label="logo" class="flex items-center space-x-2 flex-shrink-0">
+          <img
+            class="h-9"
+            src={asset('/branding/Logo/NavbarLogoSpin.svg')}
+            alt="OpenShock logo"
+            fetchpriority="high"
+          />
+        </a>
 
-          <div class="relative flex max-h-10 items-center lg:hidden">
-            <button
-              aria-label="humburger"
-              aria-expanded={isOpen}
-              class="relative -mr-6 p-6"
-              onclick={toggleNav}
-              type="button"
-            >
-              <div aria-hidden="true" class={line1Class}></div>
-              <div aria-hidden="true" class={line2Class}></div>
-            </button>
-          </div>
-        </div>
-        <div aria-hidden="true" class={navLayerClass} onclick={closeNav}></div>
+        <!-- Navigation for desktop -->
         <div
-          class={'invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 ' +
-            'flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white dark:bg-[#181a1b] ' +
-            'p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:shadow-none lg:visible lg:relative ' +
-            'lg:flex lg:w-7/12 lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none ' +
-            'lg:bg-transparent! lg:p-0 lg:opacity-100 lg:shadow-none dark:border-gray-200 ' +
-            navLinksClass}
+          class={'hidden lg:flex lg:items-center lg:gap-8'}
         >
-          <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
-            <ul class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
+          <div class="text-gray-600 dark:text-gray-200">
+            <ul class="flex gap-8 text-sm">
               <li>
                 <a
                   href="#features"
-                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
-                  <span>Features</span>
+                  Features
                 </a>
               </li>
               <li>
                 <a
                   href="#hardware"
-                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
-                  <span>Hardware</span>
+                  Hardware
                 </a>
               </li>
               <li>
                 <a
                   href="/integrations"
-                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
-                  <span>Integrations</span>
+                  Integrations
                 </a>
               </li>
               <li>
                 <a
                   href="https://wiki.openshock.org"
                   target="_blank"
-                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
-                  <span>Wiki</span>
+                  Wiki
                 </a>
               </li>
               <li>
                 <a
                   href="https://discord.gg/OpenShock"
                   target="_blank"
-                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
-                  <DiscordIcon class="w-5 inline-block mr-1" />
-                  <span>Discord</span>
+                  <DiscordIcon class="w-5 inline-block" />
                 </a>
               </li>
             </ul>
           </div>
 
-          <div class="mt-12 lg:mt-0">
-            <Button href="https://openshock.app" class="h-9 w-full px-4 sm:w-max">
-              OpenShock.app
-              <ExternalLinkIcon class="size-4" />
-            </Button>
-          </div>
+          <Button href="https://openshock.app" class="h-9 px-4 flex-shrink-0">
+            OpenShock.app
+            <ExternalLinkIcon class="size-4" />
+          </Button>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="relative flex lg:hidden">
+          <button
+            aria-label="hamburger"
+            aria-expanded={isOpen}
+            class="relative p-2"
+            onclick={toggleNav}
+            type="button"
+          >
+            <div aria-hidden="true" class={line1Class}></div>
+            <div aria-hidden="true" class={line2Class}></div>
+          </button>
+        </div>
+
+        <!-- Mobile navigation overlay -->
+        <div aria-hidden="true" class={navLayerClass} onclick={closeNav}></div>
+
+        <!-- Mobile navigation menu -->
+        <div
+          class={`fixed top-16 left-0 right-0 z-20 lg:hidden origin-top scale-y-0 transition-transform duration-300 ${
+            isOpen ? 'scale-y-100' : ''
+          } bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700`}
+        >
+          <Container>
+            <div class="py-4 space-y-4">
+              <a
+                href="#features"
+                class="block px-4 py-2 hover:text-sky-600 dark:hover:text-sky-400 transition"
+                onclick={closeNav}
+              >
+                Features
+              </a>
+              <a
+                href="#hardware"
+                class="block px-4 py-2 hover:text-sky-600 dark:hover:text-sky-400 transition"
+                onclick={closeNav}
+              >
+                Hardware
+              </a>
+              <a
+                href="/integrations"
+                class="block px-4 py-2 hover:text-sky-600 dark:hover:text-sky-400 transition"
+                onclick={closeNav}
+              >
+                Integrations
+              </a>
+              <a
+                href="https://wiki.openshock.org"
+                target="_blank"
+                class="block px-4 py-2 hover:text-sky-600 dark:hover:text-sky-400 transition"
+                onclick={closeNav}
+              >
+                Wiki
+              </a>
+              <a
+                href="https://discord.gg/OpenShock"
+                target="_blank"
+                class="block px-4 py-2 hover:text-sky-600 dark:hover:text-sky-400 transition"
+                onclick={closeNav}
+              >
+                <DiscordIcon class="w-5 inline-block" />
+                <span class="ml-2">Discord</span>
+              </a>
+              <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                <Button href="https://openshock.app" class="h-9 w-full px-4">
+                  OpenShock.app
+                  <ExternalLinkIcon class="size-4" />
+                </Button>
+              </div>
+            </div>
+          </Container>
         </div>
       </div>
     </Container>

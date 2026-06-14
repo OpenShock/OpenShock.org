@@ -2,7 +2,7 @@
   import IntegrationCard from '$lib/components/IntegrationCard.svelte';
   import Container from '$lib/components/Container.svelte';
   import SparklesIcon from '$lib/components/icons/SparklesIcon.svelte';
-  import { writable } from 'svelte/store';
+  import ArrowRightIcon from '$lib/components/icons/ArrowRightIcon.svelte';
 
   // Sample integrations data - can be moved to a database later
   const integrations = [
@@ -44,19 +44,46 @@
     }
   ];
 
-  let selectedGame = $state('All');
+  let selectedGame = $state<string | null>(null);
   let searchQuery = $state('');
 
-  const games = ['All', ...new Set(integrations.map(i => i.game))];
+  // Extract unique games from integrations
+  const gamesList = [...new Set(integrations.map(i => i.game))];
 
+  // Get integrations for the selected game
+  const gameIntegrations = $derived(
+    selectedGame
+      ? integrations.filter(integration => integration.game === selectedGame)
+      : []
+  );
+
+  // Filter integrations based on search query
   const filteredIntegrations = $derived(
+    gameIntegrations.filter(
+      integration =>
+        searchQuery === '' ||
+        integration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        integration.description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+
+  // Filter all integrations based on search query (for games view)
+  const allIntegrationsFiltered = $derived(
     integrations.filter(
       integration =>
-        (selectedGame === 'All' || integration.game === selectedGame) &&
-        (searchQuery === '' ||
-          integration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          integration.description.toLowerCase().includes(searchQuery.toLowerCase()))
+        searchQuery === '' ||
+        integration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        integration.description.toLowerCase().includes(searchQuery.toLowerCase())
     )
+  );
+
+  // Get unique games data for display
+  const gamesData = $derived(
+    gamesList.map(game => ({
+      name: game,
+      integrationCount: integrations.filter(i => i.game === game).length,
+      image: integrations.find(i => i.game === game)?.image
+    }))
   );
 </script>
 
@@ -84,57 +111,126 @@
     </Container>
   </section>
 
-  <!-- Filters Section -->
+  <!-- Search Section (always visible) -->
   <section class="sticky top-0 z-20 border-b border-gray-200 bg-white/95 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/95">
     <Container>
       <div class="py-6 space-y-4 sm:py-8">
+        <!-- Back Button (only show when viewing a game) -->
+        {#if selectedGame}
+          <button
+            onclick={() => {
+              selectedGame = null;
+              searchQuery = '';
+            }}
+            class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300 transition-colors"
+          >
+            <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            Back to Games
+          </button>
+        {/if}
+
         <!-- Search -->
         <input
           type="text"
-          placeholder="Search integrations..."
+          placeholder={selectedGame ? 'Search integrations...' : 'Search all integrations...'}
           bind:value={searchQuery}
           class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm placeholder-gray-500 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
         />
 
-        <!-- Game Filter -->
-        <div class="flex flex-wrap gap-2">
-          {#each games as game}
-            <button
-              onclick={() => (selectedGame = game)}
-              class={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
-                selectedGame === game
-                  ? 'bg-sky-600 text-white shadow-md hover:bg-sky-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
-              }`}
-            >
-              {game}
-            </button>
-          {/each}
-        </div>
-
         <!-- Results count -->
         <p class="text-xs text-gray-500 dark:text-gray-400">
-          {filteredIntegrations.length} integration{filteredIntegrations.length !== 1 ? 's' : ''} found
+          {#if selectedGame}
+            {filteredIntegrations.length} integration{filteredIntegrations.length !== 1 ? 's' : ''} found
+          {:else if searchQuery}
+            {allIntegrationsFiltered.length} integration{allIntegrationsFiltered.length !== 1 ? 's' : ''} found
+          {/if}
         </p>
       </div>
     </Container>
   </section>
 
-  <!-- Integrations Grid -->
+  <!-- Games or Integrations Grid -->
   <section class="py-12 sm:py-16">
     <Container>
-      {#if filteredIntegrations.length > 0}
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {#each filteredIntegrations as integration}
-            <IntegrationCard {...integration} />
-          {/each}
-        </div>
+      {#if !selectedGame}
+        {#if searchQuery}
+          <!-- Search Results (All Integrations) -->
+          {#if allIntegrationsFiltered.length > 0}
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {#each allIntegrationsFiltered as integration}
+                <IntegrationCard {...integration} />
+              {/each}
+            </div>
+          {:else}
+            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
+              <p class="text-gray-600 dark:text-gray-400">
+                No integrations found. Try adjusting your search.
+              </p>
+            </div>
+          {/if}
+        {:else}
+          <!-- Games Grid -->
+          {#if gamesData.length > 0}
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {#each gamesData as game}
+                <button
+                  onclick={() => (selectedGame = game.name)}
+                  class="group relative overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-sky-400 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:border-sky-500"
+                >
+                  <!-- Game Image -->
+                  <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                    {#if game.image}
+                      <img
+                        src={game.image}
+                        alt={game.name}
+                        class="h-full w-full object-cover transition-transform group-hover:scale-110"
+                      />
+                    {/if}
+                    <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  </div>
+
+                  <!-- Game Info -->
+                  <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 dark:text-white capitalize">{game.name}</h3>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                      {game.integrationCount} integration{game.integrationCount !== 1 ? 's' : ''}
+                    </p>
+                    <div class="mt-4 flex items-center text-sky-600 dark:text-sky-400 group-hover:translate-x-1 transition-transform">
+                      <span class="text-sm font-medium">View Integrations</span>
+                      <ArrowRightIcon class="ml-2 w-4 h-4" />
+                    </div>
+                  </div>
+                </button>
+              {/each}
+            </div>
+          {:else}
+            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
+              <p class="text-gray-600 dark:text-gray-400">
+                No games available yet.
+              </p>
+            </div>
+          {/if}
+        {/if}
       {:else}
-        <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
-          <p class="text-gray-600 dark:text-gray-400">
-            No integrations found. Try adjusting your search or filters.
-          </p>
-        </div>
+        <!-- Integrations Grid (for selected game) -->
+        <h2 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white capitalize">
+          {selectedGame} Integrations
+        </h2>
+        {#if filteredIntegrations.length > 0}
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {#each filteredIntegrations as integration}
+              <IntegrationCard {...integration} />
+            {/each}
+          </div>
+        {:else}
+          <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
+            <p class="text-gray-600 dark:text-gray-400">
+              No integrations found. Try adjusting your search.
+            </p>
+          </div>
+        {/if}
       {/if}
     </Container>
   </section>
