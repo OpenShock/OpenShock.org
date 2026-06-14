@@ -1,15 +1,15 @@
 <script lang="ts">
   import {
-    Square,
-    LayoutGrid,
-    Eye,
-    Crosshair,
-    Zap,
-    Medal,
-    Gamepad2,
-    Radio,
-    Wifi,
     ChevronDown,
+    Crosshair,
+    Eye,
+    Gamepad2,
+    LayoutGrid,
+    Medal,
+    Radio,
+    Square,
+    Wifi,
+    Zap,
   } from '@lucide/svelte';
   import { asset } from '$app/paths';
 
@@ -60,7 +60,7 @@
       <div class="my-2 -mx-3 border-t border-foreground/10"></div>
 
       <div class="mt-1 flex flex-col gap-0.5">
-        {#each modules as mod}
+        {#each modules as mod (mod.name)}
           <div
             class="flex items-center gap-2 rounded-md px-2 py-1.5 text-[11px] {mod.active
               ? 'border-l-2 border-primary bg-primary/10 font-medium text-primary'
@@ -83,7 +83,7 @@
       <div class="mt-auto">
         <div class="-mx-3 mb-3 border-t border-foreground/10"></div>
         <div class="flex items-center justify-around">
-          {#each connections as conn}
+          {#each connections as conn (conn)}
             <div class="flex flex-col items-center gap-1">
               <span class="text-[9px] text-muted-foreground">{conn}</span>
               <Wifi class="size-3.5 text-green-500" />

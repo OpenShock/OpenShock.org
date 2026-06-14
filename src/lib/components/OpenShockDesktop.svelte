@@ -28,11 +28,20 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-4">
-          <Button href="https://github.com/OpenShock/Desktop/releases/latest" target="_blank" size="lg">
+          <Button
+            href="https://github.com/OpenShock/Desktop/releases/latest"
+            target="_blank"
+            size="lg"
+          >
             <Download class="size-4" />
             Download for Windows
           </Button>
-          <Button href="https://github.com/OpenShock/Desktop" target="_blank" variant="link" size="lg">
+          <Button
+            href="https://github.com/OpenShock/Desktop"
+            target="_blank"
+            variant="link"
+            size="lg"
+          >
             View on GitHub
             <ArrowRight class="size-4" />
           </Button>
