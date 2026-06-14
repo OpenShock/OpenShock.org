@@ -4,13 +4,17 @@
   import AppHeader from '$lib/components/AppHeader.svelte';
   import type { Snippet } from 'svelte';
 
+  import { ModeWatcher } from "mode-watcher";
+
   interface Props {
     children?: Snippet;
   }
 
   let { children }: Props = $props();
+  
 </script>
 
+<ModeWatcher />
 <AppHeader />
 {@render children?.()}
 <AppFooter />
