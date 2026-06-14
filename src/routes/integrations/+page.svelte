@@ -1,8 +1,11 @@
 <script lang="ts">
   import IntegrationCard from '$lib/components/IntegrationCard.svelte';
   import Container from '$lib/components/Container.svelte';
-  import SparklesIcon from '$lib/components/icons/SparklesIcon.svelte';
   import ArrowRightIcon from '$lib/components/icons/ArrowRightIcon.svelte';
+
+  import { asset } from '$app/paths';
+
+
 
   // Sample integrations data - can be moved to a database later
   const integrations = [
@@ -92,18 +95,26 @@
   <meta name="description" content="Discover community and official integrations for OpenShock across various games and platforms." />
 </svelte:head>
 
-<main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+<main>
+  <!-- Decorative background elements -->
+  <div
+  aria-hidden="true"
+  class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 pointer-events-none"
+>
+  <div class="blur-[106px] h-56 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"></div>
+  <div class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+</div>
+
   <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-linear-to-br from-sky-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20">
+  <section class="relative overflow-hidden py-20">
     <Container>
       <div class="mx-auto max-w-3xl text-center">
-        <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700 dark:bg-sky-900 dark:text-sky-200">
-          <SparklesIcon class="w-4 h-4" />
-          Community Integrations
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <img class="h-8" src={asset('/branding/Icon/Icon.svg')} alt="OpenShock logo" />
+          <h1 class="text-2xl font-bold text-gray-700 dark:text-white md:text-4xl">
+            Highlighted Integrations
+          </h1>
         </div>
-        <h1 class="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-          Expand Your Experience
-        </h1>
         <p class="text-lg text-gray-600 dark:text-gray-300">
           Discover community-built and official integrations that bring haptic feedback to your favorite games and applications.
         </p>
@@ -111,10 +122,10 @@
     </Container>
   </section>
 
-  <!-- Search Section (always visible) -->
-  <section class="sticky top-0 z-20 border-b border-gray-200 bg-white/95 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/95">
+  <!-- Search Section (always visible)--> 
+  <section>
     <Container>
-      <div class="py-6 space-y-4 sm:py-8">
+      <div class="py-4 space-y-3 sm:py-6">
         <!-- Back Button (only show when viewing a game) -->
         {#if selectedGame}
           <button
@@ -136,7 +147,7 @@
           type="text"
           placeholder={selectedGame ? 'Search integrations...' : 'Search all integrations...'}
           bind:value={searchQuery}
-          class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm placeholder-gray-500 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
+          class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm placeholder-gray-500 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-400"
         />
 
         <!-- Results count -->
@@ -152,19 +163,19 @@
   </section>
 
   <!-- Games or Integrations Grid -->
-  <section class="py-12 sm:py-16">
+  <section class="relative py-16 sm:py-20">
     <Container>
       {#if !selectedGame}
         {#if searchQuery}
           <!-- Search Results (All Integrations) -->
           {#if allIntegrationsFiltered.length > 0}
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {#each allIntegrationsFiltered as integration}
+              {#each allIntegrationsFiltered as integration (integration)}
                 <IntegrationCard {...integration} />
               {/each}
             </div>
           {:else}
-            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
+            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50">
               <p class="text-gray-600 dark:text-gray-400">
                 No integrations found. Try adjusting your search.
               </p>
@@ -174,13 +185,13 @@
           <!-- Games Grid -->
           {#if gamesData.length > 0}
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {#each gamesData as game}
-                <button
+              {#each gamesData as game (game)}
+              <button
                   onclick={() => (selectedGame = game.name)}
-                  class="group relative overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-sky-400 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:border-sky-500"
+                  class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-sky-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-sky-500"
                 >
                   <!-- Game Image -->
-                  <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                  <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-800">
                     {#if game.image}
                       <img
                         src={game.image}
@@ -188,16 +199,16 @@
                         class="h-full w-full object-cover transition-transform group-hover:scale-110"
                       />
                     {/if}
-                    <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                    <div class="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100" ></div>
                   </div>
 
                   <!-- Game Info -->
                   <div class="p-4">
-                    <h3 class="font-semibold text-gray-900 dark:text-white capitalize">{game.name}</h3>
+                    <h3 class="font-semibold text-gray-800 dark:text-white capitalize group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">{game.name}</h3>
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                       {game.integrationCount} integration{game.integrationCount !== 1 ? 's' : ''}
                     </p>
-                    <div class="mt-4 flex items-center text-sky-600 dark:text-sky-400 group-hover:translate-x-1 transition-transform">
+                    <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-600 group-hover:translate-x-1 transition-transform">
                       <span class="text-sm font-medium">View Integrations</span>
                       <ArrowRightIcon class="ml-2 w-4 h-4" />
                     </div>
@@ -206,7 +217,7 @@
               {/each}
             </div>
           {:else}
-            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
+            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50">
               <p class="text-gray-600 dark:text-gray-400">
                 No games available yet.
               </p>
@@ -220,12 +231,12 @@
         </h2>
         {#if filteredIntegrations.length > 0}
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {#each filteredIntegrations as integration}
+            {#each filteredIntegrations as integration (integration)}
               <IntegrationCard {...integration} />
             {/each}
           </div>
         {:else}
-          <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-600 dark:bg-gray-800">
+          <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50">
             <p class="text-gray-600 dark:text-gray-400">
               No integrations found. Try adjusting your search.
             </p>
@@ -236,13 +247,22 @@
   </section>
 
   <!-- Submit Integration CTA -->
-  <section class="border-t border-gray-200 bg-linear-to-br from-sky-50 to-blue-50 py-12 dark:border-gray-700 dark:from-gray-800 dark:to-gray-900 sm:py-16">
+  <section class="relative border-t border-gray-200 dark:border-gray-800 py-12 sm:py-16">
+    <div
+    aria-hidden="true"
+    class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
+  >
+    <div
+      class="blur-[106px] h-32 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"
+    ></div>
+    <div class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+  </div>
     <Container>
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
           Built something cool?
         </h2>
-        <p class="mb-8 text-gray-600 dark:text-gray-300">
+        <p class="mb-8 text-gray-600 dark:text-gray-400">
           Have you created an integration? We'd love to feature it here. Submit your project on GitHub and let us know!
         </p>
         <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -259,7 +279,7 @@
           <a
             href="https://discord.gg/OpenShock"
             target="_blank"
-            class="inline-flex items-center gap-2 rounded-lg border-2 border-sky-600 px-6 py-3 font-semibold text-sky-600 transition-all hover:bg-sky-50 dark:hover:bg-gray-800"
+            class="inline-flex items-center gap-2 rounded-lg border-2 border-sky-600 px-6 py-3 font-semibold text-sky-600 transition-all hover:bg-sky-50 dark:hover:bg-gray-900"
           >
             Let us know on Discord
           </a>
@@ -268,13 +288,3 @@
     </Container>
   </section>
 </main>
-
-<style>
-  :global(body) {
-    background: white;
-  }
-
-  :global(html.dark body) {
-    background: #111827;
-  }
-</style>

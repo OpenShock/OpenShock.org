@@ -27,9 +27,6 @@
       isOpen ? 'origin-top scale-y-100' : ''
     }`
   );
-  const navLinksClass = $derived(
-    `${isOpen ? '!visible !scale-100 !opacity-100 !lg:translate-y-0' : ''}`
-  );
 </script>
 
 <header>
@@ -38,7 +35,7 @@
   >
     <Container>
       <div class="relative flex items-center justify-between py-4 md:py-0">
-        <a href="/" aria-label="logo" class="flex items-center space-x-2 flex-shrink-0">
+        <a href="/" aria-label="logo" class="flex items-center space-x-2 shrink-0">
           <img
             class="h-9"
             src={asset('/branding/Logo/NavbarLogoSpin.svg')}
@@ -49,13 +46,13 @@
 
         <!-- Navigation for desktop -->
         <div
-          class={'hidden lg:flex lg:items-center lg:gap-8'}
+          class="hidden lg:flex lg:items-center lg:gap-8"
         >
           <div class="text-gray-600 dark:text-gray-200">
             <ul class="flex gap-8 text-sm">
               <li>
                 <a
-                  href="#features"
+                  href="/#features"
                   class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
@@ -64,7 +61,7 @@
               </li>
               <li>
                 <a
-                  href="#hardware"
+                  href="/#hardware"
                   class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
@@ -103,7 +100,7 @@
             </ul>
           </div>
 
-          <Button href="https://openshock.app" class="h-9 px-4 flex-shrink-0">
+          <Button href="https://openshock.app" class="h-9 px-4 shrink-0">
             OpenShock.app
             <ExternalLinkIcon class="size-4" />
           </Button>
