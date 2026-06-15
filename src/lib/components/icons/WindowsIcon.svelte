@@ -1,0 +1,13 @@
+<script lang="ts">
+  interface Props {
+    class?: string;
+  }
+  let { class: className = 'w-6 h-6' }: Props = $props();
+</script>
+
+<svg fill="currentColor" class={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+  <path
+    d="M0 93.7l183.6-25.3 0 177.4-183.6 0 0-152.1zM0 418.3l183.6 25.3 0-175.2-183.6 0 0 149.9zm203.8 28l244.2 33.7 0-211.6-244.2 0 0 177.9zm0-380.6l0 180.1 244.2 0 0-213.8-244.2 33.7z"
+  />
+</svg>
