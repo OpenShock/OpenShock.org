@@ -1,27 +1,14 @@
 <script lang="ts">
-  import {
-    ChevronDown,
-    Crosshair,
-    Eye,
-    Gamepad2,
-    LayoutGrid,
-    Medal,
-    Radio,
-    Square,
-    Wifi,
-    Zap,
-  } from '@lucide/svelte';
+  import { ChevronDown, LayoutGrid, Square, Wifi } from '@lucide/svelte';
   import { asset } from '$app/paths';
+  import { desktopModules } from '$lib/data/desktopModules';
 
-  const modules = [
-    { name: 'Sentry', icon: Eye, chevron: true },
-    { name: 'Interception', icon: Crosshair, chevron: false },
-    { name: 'Example Module', icon: Zap, chevron: true },
-    { name: 'ShockOSC', img: asset('/icons/ShockOSC.svg'), chevron: true },
-    { name: 'Medal', icon: Medal, chevron: false },
-    { name: 'ForzaShock', icon: Gamepad2, chevron: false, active: true },
-    { name: 'Local Relay', icon: Radio, chevron: true },
-  ];
+  const chevronModules = new Set(['Sentry', 'Example Module', 'ShockOSC', 'Local Relay']);
+  const modules = desktopModules.map((m) => ({
+    ...m,
+    chevron: chevronModules.has(m.name),
+    active: m.name === 'ForzaShock',
+  }));
 
   const connections = ['SignalR', 'Hub 1', 'Hub 2'];
 </script>

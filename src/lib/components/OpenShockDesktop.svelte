@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { ArrowRight, Download, Monitor } from '@lucide/svelte';
+  import { ArrowRight, Monitor } from '@lucide/svelte';
+  import { resolve } from '$app/paths';
   import { Button } from '$lib/components/ui/button';
   import Container from './Container.svelte';
+  import DesktopDownloadButton from './DesktopDownloadButton.svelte';
   import OpenShockDesktopMock from './OpenShockDesktopMock.svelte';
 </script>
 
@@ -28,21 +30,9 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-4">
-          <Button
-            href="https://github.com/OpenShock/Desktop/releases/latest"
-            target="_blank"
-            size="lg"
-          >
-            <Download class="size-4" />
-            Download for Windows
-          </Button>
-          <Button
-            href="https://github.com/OpenShock/Desktop"
-            target="_blank"
-            variant="link"
-            size="lg"
-          >
-            View on GitHub
+          <DesktopDownloadButton />
+          <Button href={resolve('/desktop')} variant="link" size="lg">
+            Learn more
             <ArrowRight class="size-4" />
           </Button>
         </div>
