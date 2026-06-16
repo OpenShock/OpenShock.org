@@ -2,7 +2,7 @@
 
 Just the Landing Page at [OpenShock.org](https://openshock.org)
 
-Built with astro, based on astrolus theme template
+Built with svelte kit
 
 Took some inspiration from [Hoppscotch landing page](https://hoppscotch.com)
 
@@ -10,7 +10,7 @@ Took some inspiration from [Hoppscotch landing page](https://hoppscotch.com)
 
 How to run the project locally:
 
-- `npm i`
-- `npm run dev`
+- `pnpm i`
+- `pnpm dev`
 
-Astro should now be serving at `http://localhost:3000`
+Dev server should now be serving at `http://localhost:5173`
