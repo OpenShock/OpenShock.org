@@ -44,6 +44,7 @@ const config = {
           'self',
           'data:',
           'https://*.openshock.app',
+          'https://openshock.org',
           'https://*.openshock.org',
           'https://cdn-icons-png.flaticon.com',
           'https://github.com',

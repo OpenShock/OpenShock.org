@@ -1,5 +1,5 @@
 <script>
-  import { asset } from '$app/paths';
+  import { asset, resolve } from '$app/paths';
   import { Button } from '$lib/components/ui/button';
   import Container from './Container.svelte';
   import DiscordIcon from './icons/DiscordIcon.svelte';
@@ -76,6 +76,15 @@
                   onclick={closeNav}
                 >
                   Integrations
+                </a>
+              </li>
+              <li>
+                <a
+                  href={resolve('/desktop')}
+                  class="hover:text-primary block transition dark:hover:text-white md:px-4"
+                  onclick={closeNav}
+                >
+                  <span>Desktop</span>
                 </a>
               </li>
               <li>
