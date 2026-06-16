@@ -45,7 +45,7 @@
 
 <button
   aria-label="Toggle theme (hold 1s for light mode)"
-  class="relative flex items-center justify-center rounded-full p-2 text-gray-600 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+  class="hover:bg-muted hover:text-primary relative flex items-center justify-center rounded-full p-2 transition"
   onpointerdown={startPress}
   onpointerup={cancelPress}
   onpointerleave={cancelPress}
