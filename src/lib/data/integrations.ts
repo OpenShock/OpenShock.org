@@ -26,13 +26,13 @@ export const games: Game[] = [
   {
     id: 'vrchat',
     name: 'VRChat',
-    thumbnail: '/images/games/vrchat.jpg',
+    thumbnail: '',
     tags: ['VR', 'Social'],
     integrations: [
       {
         id: 'vrchat-osc-haptics',
         name: 'Loreeem ipsum',
-        thumbnail: '/images/games/vrchat.jpg',
+        thumbnail: '',
         description: 'Lorem ipsum',
         author: 'OpenShock Community',
         tags: ['Haptic', 'Avatar', 'Realtime'],
@@ -44,13 +44,13 @@ export const games: Game[] = [
   {
     id: 'minecraft',
     name: 'Minecraft',
-    thumbnail: '/images/games/minecraft.jpg',
+    thumbnail: '',
     tags: ['Sandbox'],
     integrations: [
       {
         id: 'minecraft-haptic-mod',
         name: 'Lorem ipsum',
-        thumbnail: '/images/games/minecraft.jpg',
+        thumbnail: '',
         description: 'Lorem ipsum',
         author: 'CommunityDev',
         tags: ['Mod', 'Fabric', 'Mining'],
@@ -62,13 +62,13 @@ export const games: Game[] = [
   {
     id: 'beatsaber',
     name: 'Beat Saber',
-    thumbnail: '/images/games/beatsaber.jpg',
+    thumbnail: '',
     tags: ['Rhythm', 'VR'],
     integrations: [
       {
         id: 'beatsaber-haptic',
         name: 'Lorem ipsum',
-        thumbnail: '/images/games/beatsaber.jpg',
+        thumbnail: '',
         description: 'Lorem ipsum',
         author: 'RhythmDev',
         tags: ['Rhythm', 'Sync', 'Immersive'],
@@ -80,13 +80,13 @@ export const games: Game[] = [
   {
     id: 'ue5',
     name: 'Unreal Engine 5',
-    thumbnail: '/images/games/ue5.jpg',
+    thumbnail: '',
     tags: ['Engine', 'Plugin'],
     integrations: [
       {
         id: 'ue5-haptic-plugin',
         name: 'Lorem ipsum',
-        thumbnail: '/images/games/ue5.jpg',
+        thumbnail: '',
         description: 'Lorem ipsum',
         author: 'EngineDev',
         tags: ['Plugin', 'C++', 'UE5'],
