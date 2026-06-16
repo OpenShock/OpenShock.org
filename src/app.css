@@ -2,27 +2,28 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.985 0.004 290);
+  --foreground: oklch(0.28 0.015 290);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.28 0.015 290);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.28 0.015 290);
   /* OpenShock brand pink kept as primary so CTAs stay on-brand */
   --primary: #e14a6d;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.965 0.005 290);
+  --secondary-foreground: oklch(0.28 0.015 290);
+  --muted: oklch(0.965 0.005 290);
+  --muted-foreground: oklch(0.5 0.02 290);
+  --accent: oklch(0.965 0.005 290);
+  --accent-foreground: oklch(0.28 0.015 290);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.9 0.006 290);
+  --input: oklch(0.9 0.006 290);
+  --ring: oklch(0.7 0.04 290);
 }
 
 .dark {
@@ -77,16 +78,16 @@
 @theme {
   --color-brand: #6735a5;
 
-  --color-gray-50: oklch(0.985 0 0);
-  --color-gray-100: oklch(0.97 0 0);
-  --color-gray-200: oklch(0.922 0 0);
-  --color-gray-300: oklch(0.87 0 0);
-  --color-gray-400: oklch(0.708 0 0);
-  --color-gray-500: oklch(0.556 0 0);
-  --color-gray-600: oklch(0.439 0 0);
-  --color-gray-700: oklch(0.371 0 0);
-  --color-gray-800: oklch(0.269 0 0);
-  --color-gray-900: oklch(0.205 0 0);
+  --color-gray-50: oklch(0.984 0.003 247.858);
+  --color-gray-100: oklch(0.968 0.007 247.896);
+  --color-gray-200: oklch(0.929 0.013 255.508);
+  --color-gray-300: oklch(0.869 0.022 252.894);
+  --color-gray-400: oklch(0.704 0.04 256.788);
+  --color-gray-500: oklch(0.554 0.046 257.417);
+  --color-gray-600: oklch(0.446 0.043 257.281);
+  --color-gray-700: oklch(0.372 0.044 257.287);
+  --color-gray-800: oklch(0.279 0.041 260.031);
+  --color-gray-900: oklch(0.208 0.042 265.755);
 }
 
 @layer base {
