@@ -41,6 +41,26 @@
   const toggleNav = () => (isOpen = !isOpen);
   const closeNav = () => (isOpen = false);
 
+  // Transparent overlay at the top of the page; once scrolled, fade in a
+  // blurred background so content doesn't bleed through the fixed bar.
+  let scrolled = $state(false);
+  $effect(() => {
+    const onScroll = () => (scrolled = window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  });
+
+  const navClass = $derived(
+    `fixed z-20 w-full border-b transition-colors duration-300 ${
+      isOpen
+        ? 'bg-popover border-border'
+        : scrolled
+          ? 'bg-background/80 border-border/50 backdrop-blur-md'
+          : 'border-border/50 border-b min-[1120px]:border-transparent'
+    }`
+  );
+
   const line1Class = $derived(
     `m-auto h-0.5 w-5 rounded bg-foreground transition duration-300 ${
       isOpen ? 'translate-y-1.5 rotate-45' : ''
@@ -54,9 +74,11 @@
 </script>
 
 <header>
-  <nav class="border-border/50 absolute z-20 w-full border-b lg:border-transparent">
+  <nav class={navClass}>
     <Container>
-      <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
+      <div
+        class="relative z-30 flex flex-nowrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4"
+      >
         <a href={resolve('/')} aria-label="logo" class="flex shrink-0 items-center space-x-2">
           <img
             class="h-9"
@@ -67,7 +89,7 @@
         </a>
 
         <!-- Desktop navigation -->
-        <div class="hidden lg:flex lg:items-center lg:gap-4">
+        <div class="hidden min-[1120px]:flex min-[1120px]:items-center min-[1120px]:gap-4">
           <ul class="text-foreground/80 flex items-center gap-6 text-sm">
             {#each mainLinks as link (link.label)}
               {@const Icon = link.icon}
@@ -114,7 +136,7 @@
         <button
           aria-label="Toggle navigation"
           aria-expanded={isOpen}
-          class="relative p-2 lg:hidden"
+          class="relative p-2 min-[1120px]:hidden"
           onclick={toggleNav}
           type="button"
         >
@@ -127,7 +149,7 @@
     <!-- Mobile navigation backdrop -->
     <div
       aria-hidden="true"
-      class={`bg-background/80 fixed inset-0 z-10 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+      class={`bg-background/80 fixed inset-0 z-10 backdrop-blur-sm transition-opacity duration-300 min-[1120px]:hidden ${
         isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
       onclick={closeNav}
@@ -135,7 +157,7 @@
 
     <!-- Mobile navigation menu -->
     <div
-      class={`bg-popover border-border absolute inset-x-0 top-full z-20 origin-top border-b transition-all duration-300 lg:hidden ${
+      class={`bg-popover border-border absolute inset-x-0 top-full z-20 origin-top border-b transition-all duration-300 min-[1120px]:hidden ${
         isOpen ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-0 opacity-0'
       }`}
     >
