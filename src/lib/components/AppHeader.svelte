@@ -2,9 +2,9 @@
   import { asset, resolve } from '$app/paths';
   import { Button } from '$lib/components/ui/button';
   import Container from './Container.svelte';
+  import ThemeToggle from './ThemeToggle.svelte';
   import DiscordIcon from './icons/DiscordIcon.svelte';
   import ExternalLinkIcon from './icons/ExternalLinkIcon.svelte';
-  import ThemeToggle from './ThemeToggle.svelte';
 
   // Reactive state for mobile nav
   let isOpen = $state(false);
@@ -36,7 +36,7 @@
   >
     <Container>
       <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
-        <a href="/" aria-label="logo" class="flex items-center space-x-2 shrink-0">
+        <a href={resolve('/')} aria-label="logo" class="flex items-center space-x-2 shrink-0">
           <img
             class="h-9"
             src={asset('/branding/Logo/NavbarLogoSpin.svg')}
@@ -46,14 +46,12 @@
         </a>
 
         <!-- Navigation for desktop -->
-        <div
-          class="hidden lg:flex lg:items-center lg:gap-8"
-        >
+        <div class="hidden lg:flex lg:items-center lg:gap-8">
           <div class="text-gray-600 dark:text-gray-200">
             <ul class="flex gap-8 text-sm items-center">
               <li>
                 <a
-                  href="/#features"
+                  href="#features"
                   class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
@@ -62,7 +60,7 @@
               </li>
               <li>
                 <a
-                  href="/#hardware"
+                  href="#hardware"
                   class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
@@ -71,7 +69,7 @@
               </li>
               <li>
                 <a
-                  href="/integrations"
+                  href={resolve('/integrations')}
                   class="hover:text-primary block transition dark:hover:text-white"
                   onclick={closeNav}
                 >
@@ -159,7 +157,7 @@
                 Hardware
               </a>
               <a
-                href="/integrations"
+                href={resolve('/integrations')}
                 class="block px-4 py-2 hover:text-sky-600 dark:hover:text-sky-400 transition"
                 onclick={closeNav}
               >

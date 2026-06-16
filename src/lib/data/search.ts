@@ -6,18 +6,18 @@ const integrationFuse = new Fuse(allIntegrations, {
     { name: 'name', weight: 2 },
     { name: 'tags', weight: 1.5 },
     { name: 'author', weight: 1 },
-    { name: 'description', weight: 0.5 }
+    { name: 'description', weight: 0.5 },
   ],
   threshold: 0.3,
-  ignoreLocation: true
+  ignoreLocation: true,
 });
 
 const gameFuse = new Fuse(games, {
   keys: [
     { name: 'name', weight: 2 },
-    { name: 'tags', weight: 1 }
+    { name: 'tags', weight: 1 },
   ],
-  threshold: 0.3
+  threshold: 0.3,
 });
 
 export function searchIntegrations(query: string) {

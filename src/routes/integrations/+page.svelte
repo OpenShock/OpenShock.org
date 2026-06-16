@@ -1,10 +1,10 @@
 <script lang="ts">
-  import IntegrationCard from '$lib/components/IntegrationCard.svelte';
-  import Container from '$lib/components/Container.svelte';
-  import ArrowRightIcon from '$lib/components/icons/ArrowRightIcon.svelte';
   import { asset } from '$app/paths';
+  import Container from '$lib/components/Container.svelte';
+  import IntegrationCard from '$lib/components/IntegrationCard.svelte';
+  import ArrowRightIcon from '$lib/components/icons/ArrowRightIcon.svelte';
   import { games } from '$lib/data/integrations';
-  import { searchIntegrations, getMatchedGame } from '$lib/data/search';
+  import { getMatchedGame, searchIntegrations } from '$lib/data/search';
 
   let selectedGame = $state<string | null>(null);
   let searchQuery = $state('');
@@ -22,7 +22,9 @@
   // Get integrations for the selected game (with search applied)
   const filteredIntegrations = $derived(
     selectedGame
-      ? searchIntegrations(debouncedQuery).filter((integration) => integration.gameId === selectedGame)
+      ? searchIntegrations(debouncedQuery).filter(
+          (integration) => integration.gameId === selectedGame
+        )
       : []
   );
 
@@ -38,7 +40,7 @@
       id: game.id,
       name: game.name,
       image: game.thumbnail,
-      integrationCount: game.integrations.length
+      integrationCount: game.integrations.length,
     }))
   );
 
@@ -47,7 +49,10 @@
 
 <svelte:head>
   <title>Integrations - OpenShock</title>
-  <meta name="description" content="Discover community and official integrations for OpenShock across various games and platforms." />
+  <meta
+    name="description"
+    content="Discover community and official integrations for OpenShock across various games and platforms."
+  />
 </svelte:head>
 
 <main>
@@ -56,7 +61,9 @@
     aria-hidden="true"
     class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 pointer-events-none"
   >
-    <div class="blur-[106px] h-56 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"></div>
+    <div
+      class="blur-[106px] h-56 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"
+    ></div>
     <div class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
   </div>
 
@@ -71,7 +78,8 @@
           </h1>
         </div>
         <p class="text-lg text-gray-600 dark:text-gray-300">
-          Discover community-built and official integrations that bring haptic feedback to your favorite games and applications.
+          Discover community-built and official integrations that bring haptic feedback to your
+          favorite games and applications.
         </p>
       </div>
     </Container>
@@ -92,7 +100,12 @@
             class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300 transition-colors"
           >
             <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
             Back to Games
           </button>
@@ -112,7 +125,9 @@
           {#if selectedGame}
             {filteredIntegrations.length} integration{filteredIntegrations.length !== 1 ? 's' : ''} found
           {:else if debouncedQuery}
-            {allIntegrationsFiltered.length} integration{allIntegrationsFiltered.length !== 1 ? 's' : ''} found
+            {allIntegrationsFiltered.length} integration{allIntegrationsFiltered.length !== 1
+              ? 's'
+              : ''} found
           {/if}
         </p>
       </div>
@@ -136,23 +151,32 @@
                   <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-800">
                     {#if matchedGame.thumbnail}
                       <img
-                        src={matchedGame.thumbnail}
+                        src={asset(matchedGame.thumbnail)}
                         alt={matchedGame.name}
                         class="h-full w-full object-cover transition-transform group-hover:scale-110"
                       />
                     {/if}
-                    <div class="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+                    <div
+                      class="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
+                    ></div>
                   </div>
 
                   <!-- Game Info -->
                   <div class="p-4">
-                    <h3 class="font-semibold text-gray-800 dark:text-white capitalize group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
+                    <h3
+                      class="font-semibold text-gray-800 dark:text-white capitalize group-hover:text-sky-600 dark:group-hover:text-sky-400 transition"
+                    >
                       {matchedGame.name}
                     </h3>
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                      {matchedGame.integrations.length} integration{matchedGame.integrations.length !== 1 ? 's' : ''}
+                      {matchedGame.integrations.length} integration{matchedGame.integrations
+                        .length !== 1
+                        ? 's'
+                        : ''}
                     </p>
-                    <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-600 group-hover:translate-x-1 transition-transform">
+                    <div
+                      class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-600 group-hover:translate-x-1 transition-transform"
+                    >
                       <span class="text-sm font-medium">View Integrations</span>
                       <ArrowRightIcon class="ml-2 w-4 h-4" />
                     </div>
@@ -165,14 +189,16 @@
                   game={integration.gameName}
                   description={integration.description}
                   author={integration.author}
-                  image={integration.thumbnail}
+                  image={asset(integration.thumbnail)}
                   githubUrl={integration.links[0]?.url ?? '#'}
                   tags={integration.tags}
                 />
               {/each}
             </div>
           {:else}
-            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50">
+            <div
+              class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50"
+            >
               <p class="text-gray-600 dark:text-gray-400">
                 No integrations found. Try adjusting your search.
               </p>
@@ -191,23 +217,29 @@
                   <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-800">
                     {#if game.image}
                       <img
-                        src={game.image}
+                        src={asset(game.image)}
                         alt={game.name}
                         class="h-full w-full object-cover transition-transform group-hover:scale-110"
                       />
                     {/if}
-                    <div class="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+                    <div
+                      class="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
+                    ></div>
                   </div>
 
                   <!-- Game Info -->
                   <div class="p-4">
-                    <h3 class="font-semibold text-gray-800 dark:text-white capitalize group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
+                    <h3
+                      class="font-semibold text-gray-800 dark:text-white capitalize group-hover:text-sky-600 dark:group-hover:text-sky-400 transition"
+                    >
                       {game.name}
                     </h3>
                     <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                       {game.integrationCount} integration{game.integrationCount !== 1 ? 's' : ''}
                     </p>
-                    <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-600 group-hover:translate-x-1 transition-transform">
+                    <div
+                      class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-600 group-hover:translate-x-1 transition-transform"
+                    >
                       <span class="text-sm font-medium">View Integrations</span>
                       <ArrowRightIcon class="ml-2 w-4 h-4" />
                     </div>
@@ -216,10 +248,10 @@
               {/each}
             </div>
           {:else}
-            <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50">
-              <p class="text-gray-600 dark:text-gray-400">
-                No games available yet.
-              </p>
+            <div
+              class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50"
+            >
+              <p class="text-gray-600 dark:text-gray-400">No games available yet.</p>
             </div>
           {/if}
         {/if}
@@ -236,14 +268,16 @@
                 game={integration.gameName}
                 description={integration.description}
                 author={integration.author}
-                image={integration.thumbnail}
+                image={asset(integration.thumbnail)}
                 githubUrl={integration.links[0]?.url ?? '#'}
                 tags={integration.tags}
               />
             {/each}
           </div>
         {:else}
-          <div class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50">
+          <div
+            class="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-900/50"
+          >
             <p class="text-gray-600 dark:text-gray-400">
               No integrations found. Try adjusting your search.
             </p>
@@ -259,16 +293,19 @@
       aria-hidden="true"
       class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 pointer-events-none"
     >
-      <div class="blur-[106px] h-32 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"></div>
-      <div class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+      <div
+        class="blur-[106px] h-32 bg-linear-to-br from-primary to-purple-400 dark:from-blue-700"
+      ></div>
+      <div
+        class="blur-[106px] h-32 bg-linear-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"
+      ></div>
     </div>
     <Container>
       <div class="mx-auto max-w-2xl text-center">
-        <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
-          Built something cool?
-        </h2>
+        <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white">Built something cool?</h2>
         <p class="mb-8 text-gray-600 dark:text-gray-400">
-          Have you created an integration? We'd love to feature it here. Submit your project on GitHub and let us know!
+          Have you created an integration? We'd love to feature it here. Submit your project on
+          GitHub and let us know!
         </p>
         <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <a
@@ -277,7 +314,10 @@
             class="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-6 py-3 font-semibold text-white transition-all hover:bg-sky-700 hover:shadow-lg"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />            </svg>
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
             Submit on GitHub
           </a>
           <a

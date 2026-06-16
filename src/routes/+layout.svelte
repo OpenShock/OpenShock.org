@@ -2,19 +2,17 @@
   import '../app.css';
   import AppFooter from '$lib/components/AppFooter.svelte';
   import AppHeader from '$lib/components/AppHeader.svelte';
+  import { ModeWatcher } from 'mode-watcher';
   import type { Snippet } from 'svelte';
-
-  import { ModeWatcher } from "mode-watcher";
 
   interface Props {
     children?: Snippet;
   }
 
   let { children }: Props = $props();
-  
 </script>
 
-<ModeWatcher />
+<ModeWatcher defaultMode="dark" track={false} />
 <AppHeader />
 {@render children?.()}
 <AppFooter />

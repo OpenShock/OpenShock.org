@@ -1,22 +1,17 @@
 <script lang="ts">
-  import { toggleMode } from 'mode-watcher';
-  
+  import { mode, setMode } from 'mode-watcher';
+
   const HOLD_DURATION = 1000;
 
-  let isDark = $derived(true);
+  // Reflect mode-watcher's reactive state; treat the (undefined) initial
+  // resolution as dark since the site defaults to dark mode.
+  let isDark = $derived(mode.current !== 'light');
   let holdProgress = $state(0);
   let holdTimer: number | null = null;
   let holdInterval: number | null = null;
 
-
-
-  $effect(() => {
-    isDark = document.documentElement.classList.contains('dark');
-  });
-
   function setTheme(dark: boolean) {
-    isDark = dark;
-    toggleMode()
+    setMode(dark ? 'dark' : 'light');
   }
 
   function startPress() {
@@ -26,7 +21,7 @@
       return;
     }
 
-    // Switching to light mode requires a 2s hold
+    // Switching to light mode requires a 1s hold
     const start = Date.now();
 
     holdInterval = window.setInterval(() => {
@@ -49,7 +44,7 @@
 </script>
 
 <button
-  aria-label="Toggle theme (hold 2s for light mode)"
+  aria-label="Toggle theme (hold 1s for light mode)"
   class="relative flex items-center justify-center rounded-full p-2 text-gray-600 transition hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
   onpointerdown={startPress}
   onpointerup={cancelPress}
@@ -59,12 +54,20 @@
   {#if isDark}
     <!-- Moon icon -->
     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+      />
     </svg>
   {:else}
     <!-- Sun icon -->
     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.02 0l-.7.7M6.34 17.66l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.7-.7M6.34 6.34l-.7-.7m12.02 0l-.7.7M6.34 17.66l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"
+      />
     </svg>
   {/if}
 
@@ -85,4 +88,3 @@
     </svg>
   {/if}
 </button>
-

@@ -37,9 +37,9 @@ export const games: Game[] = [
         author: 'OpenShock Community',
         tags: ['Haptic', 'Avatar', 'Realtime'],
         official: false,
-        links: [{ label: 'GitHub', url: 'https://github.com/openShock/vrchat-integration' }]
-      }
-    ]
+        links: [{ label: 'GitHub', url: 'https://github.com/openShock/vrchat-integration' }],
+      },
+    ],
   },
   {
     id: 'minecraft',
@@ -55,9 +55,9 @@ export const games: Game[] = [
         author: 'CommunityDev',
         tags: ['Mod', 'Fabric', 'Mining'],
         official: false,
-        links: [{ label: 'GitHub', url: 'https://github.com/example/minecraft-haptic-mod' }]
-      }
-    ]
+        links: [{ label: 'GitHub', url: 'https://github.com/example/minecraft-haptic-mod' }],
+      },
+    ],
   },
   {
     id: 'beatsaber',
@@ -73,9 +73,9 @@ export const games: Game[] = [
         author: 'RhythmDev',
         tags: ['Rhythm', 'Sync', 'Immersive'],
         official: false,
-        links: [{ label: 'GitHub', url: 'https://github.com/example/beatsaber-haptic' }]
-      }
-    ]
+        links: [{ label: 'GitHub', url: 'https://github.com/example/beatsaber-haptic' }],
+      },
+    ],
   },
   {
     id: 'ue5',
@@ -91,10 +91,10 @@ export const games: Game[] = [
         author: 'EngineDev',
         tags: ['Plugin', 'C++', 'UE5'],
         official: false,
-        links: [{ label: 'GitHub', url: 'https://github.com/example/ue5-haptic-plugin' }]
-      }
-    ]
-  }
+        links: [{ label: 'GitHub', url: 'https://github.com/example/ue5-haptic-plugin' }],
+      },
+    ],
+  },
 ];
 
 export type IntegrationWithGame = Integration & {
@@ -106,6 +106,6 @@ export const allIntegrations: IntegrationWithGame[] = games.flatMap((game) =>
   game.integrations.map((integration) => ({
     ...integration,
     gameId: game.id,
-    gameName: game.name
+    gameName: game.name,
   }))
 );
