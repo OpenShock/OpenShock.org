@@ -8,6 +8,7 @@
   import GithubIcon from '$lib/components/icons/GithubIcon.svelte';
   import { Button } from '$lib/components/ui/button/index.js';
   import { Input } from '$lib/components/ui/input/index.js';
+  import ElectricBackground from '$lib/components/ElectricBackground.svelte';
   import { games } from '$lib/data/integrations';
   import { getMatchedGame, searchIntegrations } from '$lib/data/search';
 
@@ -78,6 +79,7 @@
 
   <!-- Hero Section -->
   <section class="relative overflow-hidden pt-36 pb-20">
+    <ElectricBackground />
     <Container>
       <div class="mx-auto max-w-3xl text-center">
         <div class="mb-4 flex items-center justify-center gap-2">

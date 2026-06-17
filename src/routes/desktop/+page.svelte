@@ -10,6 +10,7 @@
   } from '@lucide/svelte';
   import { asset } from '$app/paths';
   import Container from '$lib/components/Container.svelte';
+  import ElectricBackground from '$lib/components/ElectricBackground.svelte';
   import DesktopDownloadButton from '$lib/components/DesktopDownloadButton.svelte';
   import GithubIcon from '$lib/components/icons/GithubIcon.svelte';
   import { Button } from '$lib/components/ui/button';
@@ -90,6 +91,7 @@
 <main class="mb-40">
   <!-- Hero -->
   <section class="relative overflow-hidden pt-32 md:pt-40">
+    <ElectricBackground />
     <div
       aria-hidden="true"
       class="absolute inset-x-0 top-0 -z-10 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
