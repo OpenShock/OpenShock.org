@@ -8,7 +8,7 @@
 <div id="features">
   <Container>
     <div class="md:w-2/3 lg:w-1/2">
-      <SparklesIcon class="w-6 h-6 text-secondary" />
+      <SparklesIcon class="w-6 h-6 text-brand" />
 
       <h2 class="my-8 text-2xl font-bold text-gray-700 dark:text-white md:text-4xl">
         Safety and Security at the top most priority
