@@ -10,17 +10,18 @@
     description: string;
     author: string;
     image?: string;
-    githubUrl: string;
+    githubUrl?: string;
     tags?: string[];
   }
 
   let { name, game, description, author, image, githubUrl, tags = [] }: Props = $props();
 </script>
 
-<a
+<svelte:element
+  this={githubUrl ? 'a' : 'div'}
   href={githubUrl}
-  target="_blank"
-  rel="external noopener noreferrer"
+  target={githubUrl ? '_blank' : undefined}
+  rel={githubUrl ? 'external noopener' : undefined}
   class="group block transition-all hover:-translate-y-0.5"
 >
   <Card.Root class="h-full transition-colors group-hover:ring-primary/40">
@@ -57,12 +58,14 @@
       <p class="text-muted-foreground text-xs">
         by <span class="text-foreground font-semibold">{author}</span>
       </p>
-      <div
-        class="text-primary flex items-center gap-2 transition-transform group-hover:translate-x-1"
-      >
-        <GithubIcon class="h-4 w-4" />
-        <ExternalLinkIcon class="h-4 w-4" />
-      </div>
+      {#if githubUrl}
+        <div
+          class="text-primary flex items-center gap-2 transition-transform group-hover:translate-x-1"
+        >
+          <GithubIcon class="h-4 w-4" />
+          <ExternalLinkIcon class="h-4 w-4" />
+        </div>
+      {/if}
     </Card.Footer>
   </Card.Root>
-</a>
+</svelte:element>

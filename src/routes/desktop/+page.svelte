@@ -10,8 +10,8 @@
   } from '@lucide/svelte';
   import { asset } from '$app/paths';
   import Container from '$lib/components/Container.svelte';
-  import ElectricBackground from '$lib/components/ElectricBackground.svelte';
   import DesktopDownloadButton from '$lib/components/DesktopDownloadButton.svelte';
+  import ElectricBackground from '$lib/components/ElectricBackground.svelte';
   import GithubIcon from '$lib/components/icons/GithubIcon.svelte';
   import { Button } from '$lib/components/ui/button';
   import { type RepoModule, fetchDesktopModules } from '$lib/data/desktopRepo';
@@ -97,10 +97,10 @@
       class="absolute inset-x-0 top-0 -z-10 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20"
     >
       <div
-        class="h-56 bg-gradient-to-br from-primary to-purple-400 blur-[106px] dark:from-blue-700"
+        class="h-56 bg-linear-to-br from-primary to-purple-400 blur-[106px] dark:from-blue-700"
       ></div>
       <div
-        class="h-32 bg-gradient-to-r from-cyan-400 to-sky-300 blur-[106px] dark:to-indigo-600"
+        class="h-32 bg-linear-to-r from-cyan-400 to-sky-300 blur-[106px] dark:to-indigo-600"
       ></div>
     </div>
 
@@ -134,7 +134,7 @@
       <div class="relative mx-auto mt-16 max-w-4xl">
         <div
           aria-hidden="true"
-          class="absolute inset-0 -z-10 scale-90 bg-gradient-to-br from-primary/40 to-purple-500/30 opacity-50 blur-[80px] dark:opacity-40"
+          class="absolute inset-0 -z-10 scale-90 bg-linear-to-br from-primary/40 to-purple-500/30 opacity-50 blur-[80px] dark:opacity-40"
         ></div>
         <img
           src={asset('/images/desktop/screenshot.webp')}
@@ -223,7 +223,7 @@
             <a
               href={mod.sourceUrl}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               class="group flex flex-col gap-4 rounded-xl bg-card p-5 ring-1 ring-foreground/10 transition hover:ring-foreground/20"
             >
               <div class="flex items-start gap-4">
@@ -291,7 +291,7 @@
       >
         <div
           aria-hidden="true"
-          class="absolute inset-0 -z-10 bg-gradient-to-br from-primary/15 to-purple-500/10"
+          class="absolute inset-0 -z-10 bg-linear-to-br from-primary/15 to-purple-500/10"
         ></div>
         <h2 class="text-2xl font-bold text-gray-900 md:text-4xl dark:text-white">
           Get OpenShock Desktop

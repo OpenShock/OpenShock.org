@@ -1,6 +1,7 @@
 <script lang="ts">
   import { asset } from '$app/paths';
   import Container from '$lib/components/Container.svelte';
+  import ElectricBackground from '$lib/components/ElectricBackground.svelte';
   import GameCard from '$lib/components/GameCard.svelte';
   import IntegrationCard from '$lib/components/IntegrationCard.svelte';
   import ArrowRightIcon from '$lib/components/icons/ArrowRightIcon.svelte';
@@ -8,9 +9,9 @@
   import GithubIcon from '$lib/components/icons/GithubIcon.svelte';
   import { Button } from '$lib/components/ui/button/index.js';
   import { Input } from '$lib/components/ui/input/index.js';
-  import ElectricBackground from '$lib/components/ElectricBackground.svelte';
   import { games } from '$lib/data/integrations';
   import { getMatchedGame, searchIntegrations } from '$lib/data/search';
+  import { onDestroy } from 'svelte';
 
   let selectedGame = $state<string | null>(null);
   let searchQuery = $state('');
@@ -57,6 +58,8 @@
     searchQuery = '';
     debouncedQuery = '';
   }
+
+  onDestroy(() => clearTimeout(debounceTimer));
 </script>
 
 <svelte:head>
@@ -152,7 +155,7 @@
                   description={integration.description}
                   author={integration.author}
                   image={asset(integration.thumbnail)}
-                  githubUrl={integration.links[0]?.url ?? '#'}
+                  githubUrl={integration.links[0]?.url}
                   tags={integration.tags}
                 />
               {/each}

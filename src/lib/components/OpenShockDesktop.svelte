@@ -42,7 +42,7 @@
       <div class="relative lg:w-7/12">
         <div
           aria-hidden="true"
-          class="absolute inset-0 -z-10 scale-90 bg-gradient-to-br from-primary/40 to-purple-500/30 opacity-50 blur-[80px] dark:opacity-40"
+          class="absolute inset-0 -z-10 scale-90 bg-linear-to-br from-primary/40 to-purple-500/30 opacity-50 blur-[80px] dark:opacity-40"
         ></div>
         <OpenShockDesktopMock />
       </div>

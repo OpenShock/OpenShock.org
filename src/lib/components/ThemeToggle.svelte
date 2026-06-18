@@ -41,6 +41,16 @@
     holdInterval = null;
     holdProgress = 0;
   }
+
+  // Keyboard users can't perform the press-and-hold gesture, so Enter/Space
+  // toggle the theme directly. preventDefault stops the synthesized click so
+  // this doesn't double-fire alongside the pointer handlers.
+  function onKeydown(e: KeyboardEvent) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setTheme(!isDark);
+    }
+  }
 </script>
 
 <button
@@ -50,6 +60,7 @@
   onpointerup={cancelPress}
   onpointerleave={cancelPress}
   onpointercancel={cancelPress}
+  onkeydown={onKeydown}
 >
   {#if isDark}
     <!-- Moon icon -->

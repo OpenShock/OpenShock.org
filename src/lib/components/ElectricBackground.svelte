@@ -5,10 +5,15 @@
 
   onMount(() => {
     const ctx = canvas.getContext('2d')!;
+    // Only target interactive elements within the background's own container.
+    const root = canvas.parentElement ?? document;
 
     function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
+      // Draw in CSS pixels; the transform maps them to the HiDPI backing store.
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
@@ -40,8 +45,10 @@
       const my = (p1[1] + p2[1]) / 2;
       const len = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]);
       if (len < 2) return [p1, p2];
-      const dx = p2[0] - p1[0], dy = p2[1] - p1[1];
-      const nx = -dy / len, ny = dx / len;
+      const dx = p2[0] - p1[0],
+        dy = p2[1] - p1[1];
+      const nx = -dy / len,
+        ny = dx / len;
       const offset = (Math.random() - 0.5) * len * roughness;
       const mp: Point = [mx + nx * offset, my + ny * offset];
       return [
@@ -70,7 +77,8 @@
     }
 
     function randomEdgePoint(): Point {
-      const vw = canvas.width, vh = canvas.height;
+      const vw = canvas.offsetWidth,
+        vh = canvas.offsetHeight;
       const edge = Math.floor(Math.random() * 4);
       if (edge === 0) return [Math.random() * vw, 0];
       if (edge === 1) return [vw, Math.random() * vh];
@@ -81,34 +89,51 @@
     function elementEdgePoint(rect: DOMRect, cr: DOMRect): Point {
       const side = Math.floor(Math.random() * 4);
       if (side === 0) return [rect.left - cr.left + Math.random() * rect.width, rect.top - cr.top];
-      if (side === 1) return [rect.right - cr.left, rect.top - cr.top + Math.random() * rect.height];
-      if (side === 2) return [rect.left - cr.left + Math.random() * rect.width, rect.bottom - cr.top];
+      if (side === 1)
+        return [rect.right - cr.left, rect.top - cr.top + Math.random() * rect.height];
+      if (side === 2)
+        return [rect.left - cr.left + Math.random() * rect.width, rect.bottom - cr.top];
       return [rect.left - cr.left, rect.top - cr.top + Math.random() * rect.height];
     }
 
-    function getVisibleElements(cr: DOMRect): Element[] {
-      return Array.from(
-        document.querySelectorAll('button, a[href], [role="button"], .ring-1')
-      ).filter((el) => {
-        const r = el.getBoundingClientRect();
-        return r.width > 0 && r.height > 0
-          && r.top < cr.bottom && r.bottom > cr.top
-          && r.left < cr.right && r.right > cr.left;
-      });
+    type Target = { el: Element; rect: DOMRect };
+
+    function getVisibleElements(cr: DOMRect): Target[] {
+      const targets: Target[] = [];
+      for (const el of root.querySelectorAll('button, a[href], [role="button"]')) {
+        const rect = el.getBoundingClientRect();
+        if (
+          rect.width > 0 &&
+          rect.height > 0 &&
+          rect.top < cr.bottom &&
+          rect.bottom > cr.top &&
+          rect.left < cr.right &&
+          rect.right > cr.left
+        ) {
+          targets.push({ el, rect });
+        }
+      }
+      return targets;
     }
 
     function spawnBolt() {
-      if (bolts.length >= 3) { scheduleNext(); return; }
+      if (bolts.length >= 3) {
+        scheduleNext();
+        return;
+      }
 
       const cr = canvasRect();
-      const vw = canvas.width, vh = canvas.height;
+      const vw = canvas.offsetWidth,
+        vh = canvas.offsetHeight;
       const elements = getVisibleElements(cr);
 
       let x1: number, y1: number, x2: number, y2: number;
+      let startEl: Element | null = null;
 
       if (elements.length > 0 && Math.random() < 0.75) {
-        const el = elements[Math.floor(Math.random() * elements.length)];
-        [x1, y1] = elementEdgePoint(el.getBoundingClientRect(), cr);
+        const start = elements[Math.floor(Math.random() * elements.length)];
+        startEl = start.el;
+        [x1, y1] = elementEdgePoint(start.rect, cr);
       } else {
         [x1, y1] = randomEdgePoint();
       }
@@ -124,9 +149,9 @@
         if (r < 0.4 && elements.length > 1) {
           let el2 = elements[Math.floor(Math.random() * elements.length)];
           let attempts = 0;
-          while (el2 === elements[0] && attempts++ < 5)
+          while (el2.el === startEl && attempts++ < 5)
             el2 = elements[Math.floor(Math.random() * elements.length)];
-          [x2, y2] = elementEdgePoint(el2.getBoundingClientRect(), cr);
+          [x2, y2] = elementEdgePoint(el2.rect, cr);
         } else {
           const dist = 100 + Math.random() * Math.min(vw, vh) * 0.45;
           const angle = Math.random() * Math.PI * 2;
@@ -154,13 +179,13 @@
 
     // [strokeStyle, lineWidth, shadowColor, shadowBlur, alphaFactor]
     const PASSES: [string, number, string, number, number][] = [
-      ['#6735a5',                7,   '#6735a5', 28, 0.30],
-      ['#e14a6d',                1.5, '#e14a6d', 10, 0.75],
-      ['rgba(255,230,255,0.95)', 0.8, '#000',     0, 0.90],
+      ['#6735a5', 7, '#6735a5', 28, 0.3],
+      ['#e14a6d', 1.5, '#e14a6d', 10, 0.75],
+      ['rgba(255,230,255,0.95)', 0.8, '#000', 0, 0.9],
     ];
 
     function loop() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
@@ -214,13 +239,22 @@
       mouse.y = e.clientY - cr.top;
     }
 
+    function resetCursor() {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    }
+
     window.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseleave', resetCursor);
+    window.addEventListener('blur', resetCursor);
     scheduleNext();
 
     return () => {
       cancelAnimationFrame(rafId);
       clearTimeout(timeoutId);
       window.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseleave', resetCursor);
+      window.removeEventListener('blur', resetCursor);
       ro.disconnect();
     };
   });

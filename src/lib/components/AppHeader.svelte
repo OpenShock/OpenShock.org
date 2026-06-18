@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Blocks, BookOpen, Cpu, Monitor, Sparkles } from '@lucide/svelte';
+  import { BookOpen, Cpu, Monitor, Sparkles } from '@lucide/svelte';
   import { asset, resolve } from '$app/paths';
   import { Button } from '$lib/components/ui/button';
   import type { Component } from 'svelte';
@@ -20,7 +20,7 @@
   const navLinks: NavLink[] = [
     { label: 'Features', href: '/#features', icon: Sparkles },
     { label: 'Hardware', href: '/#hardware', icon: Cpu },
-    { label: 'Integrations', href: resolve('/integrations'), icon: Blocks },
+    // Integrations page is a work in progress — hidden from nav for now.
     { label: 'Desktop', href: resolve('/desktop'), icon: Monitor },
     { label: 'Wiki', href: 'https://wiki.openshock.org', external: true, icon: BookOpen },
     {
@@ -57,7 +57,7 @@
         ? 'bg-popover border-border'
         : scrolled
           ? 'bg-background/80 border-border/50 backdrop-blur-md'
-          : 'border-border/50 border-b min-[1120px]:border-transparent'
+          : 'border-border/50 min-[1120px]:border-transparent'
     }`
   );
 
@@ -98,7 +98,7 @@
                   href={link.href}
                   class="hover:text-primary inline-flex items-center gap-1.5 transition"
                   target={link.external ? '_blank' : undefined}
-                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  rel={link.external ? 'noopener' : undefined}
                   onclick={closeNav}
                 >
                   <Icon class="size-4" />
@@ -116,7 +116,7 @@
                 href={link.href}
                 class="hover:bg-muted hover:text-primary rounded-full p-2 transition"
                 target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
+                rel={link.external ? 'noopener' : undefined}
                 aria-label={link.label}
                 onclick={closeNav}
               >
@@ -170,7 +170,7 @@
                 href={link.href}
                 class="hover:text-primary hover:bg-muted flex items-center gap-2 rounded-md px-4 py-2 transition"
                 target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
+                rel={link.external ? 'noopener' : undefined}
                 onclick={closeNav}
               >
                 <Icon class="size-5" />

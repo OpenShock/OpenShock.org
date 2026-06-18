@@ -27,10 +27,35 @@ interface RepoResponse {
 }
 
 function parseVersion(v: string): { nums: number[]; pre: string } {
-  const [core, pre] = v.split('-');
+  // Split on the FIRST hyphen only, so pre-releases like `rc-1` stay intact.
+  const idx = v.indexOf('-');
+  const core = idx === -1 ? v : v.slice(0, idx);
+  const pre = idx === -1 ? '' : v.slice(idx + 1);
   const nums = core.split('.').map((n) => parseInt(n, 10) || 0);
   while (nums.length < 3) nums.push(0);
-  return { nums, pre: pre ?? '' };
+  return { nums, pre };
+}
+
+/** Compare two pre-release strings dot-segment by segment, numerically where possible. */
+function comparePre(a: string, b: string): number {
+  const as = a.split('.');
+  const bs = b.split('.');
+  for (let i = 0; i < Math.max(as.length, bs.length); i++) {
+    const x = as[i];
+    const y = bs[i];
+    if (x === undefined) return -1; // a is a prefix of b -> lower precedence
+    if (y === undefined) return 1;
+    const xn = /^\d+$/.test(x);
+    const yn = /^\d+$/.test(y);
+    if (xn && yn) {
+      const d = parseInt(x, 10) - parseInt(y, 10);
+      if (d !== 0) return d;
+    } else {
+      const d = x.localeCompare(y);
+      if (d !== 0) return d;
+    }
+  }
+  return 0;
 }
 
 /** Semver-ish compare: a stable release ranks above a pre-release of the same core. */
@@ -42,7 +67,7 @@ function compareVersions(a: string, b: string): number {
   }
   if (!pa.pre && pb.pre) return 1;
   if (pa.pre && !pb.pre) return -1;
-  return pa.pre.localeCompare(pb.pre);
+  return comparePre(pa.pre, pb.pre);
 }
 
 function pickLatestVersion(versions: string[]): string | undefined {

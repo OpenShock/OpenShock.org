@@ -78,7 +78,7 @@
           {/each}
         </div>
         <div class="mt-3 flex items-center gap-2 px-1">
-          <div class="size-6 rounded-full bg-gradient-to-br from-primary/60 to-purple-500/60"></div>
+          <div class="size-6 rounded-full bg-linear-to-br from-primary/60 to-purple-500/60"></div>
           <span class="text-[11px] font-medium text-foreground">OpenShock</span>
         </div>
       </div>
