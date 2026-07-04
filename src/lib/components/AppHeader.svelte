@@ -52,14 +52,15 @@
   });
 
   const navClass = $derived(
-    `fixed z-20 w-full border-b transition-colors duration-300 ${
-      isOpen
-        ? 'bg-popover border-border'
-        : scrolled
-          ? 'bg-background/80 border-border/50 backdrop-blur-md'
-          : 'border-border/50 min-[1120px]:border-transparent'
+    `fixed z-20 w-full transition-colors duration-300 ${
+      isOpen ? 'bg-popover' : scrolled ? 'bg-background/80 backdrop-blur-md' : ''
     }`
   );
+
+  // Bottom border rendered as a horizontal gradient so it fades out toward the
+  // edges. Always visible.
+  const borderClass =
+    'pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-border to-transparent';
 
   const line1Class = $derived(
     `m-auto h-0.5 w-5 rounded bg-foreground transition duration-300 ${
@@ -145,6 +146,9 @@
         </button>
       </div>
     </Container>
+
+    <!-- Bottom border that fades toward the sides -->
+    <div aria-hidden="true" class={borderClass}></div>
 
     <!-- Mobile navigation backdrop -->
     <div

@@ -22,9 +22,15 @@
   <Container>
     <div class="relative pt-40">
       <div class="mx-auto text-center lg:w-2/3">
-        <h1 class="text-5xl font-bold text-gray-900 md:text-6xl xl:text-7xl dark:text-white">
-          The <span class="text-primary">Shocking</span> experience.
-        </h1>
+        <div class="relative">
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-48 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/40 blur-[100px]"
+          ></div>
+          <h1 class="text-5xl font-bold text-gray-900 md:text-6xl xl:text-7xl dark:text-white">
+            The <span class="text-primary">Shocking</span> experience.
+          </h1>
+        </div>
         <p class="mt-8 text-gray-700 dark:text-gray-300">
           OpenShock is an open-source platform designed to control various shocking devices over the
           internet, catering to all your masochistic needs!
