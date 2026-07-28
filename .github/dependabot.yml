@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  # Check for Nuget package updates
+  # Check for npm package updates
   - package-ecosystem: npm
     directory: /
     schedule:
