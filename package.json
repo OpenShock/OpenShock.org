@@ -21,7 +21,7 @@
 		"@sveltejs/adapter-cloudflare": "^7.2.9",
 		"@sveltejs/adapter-node": "^5.5.7",
 		"@sveltejs/enhanced-img": "^0.11.0",
-		"@sveltejs/kit": "^2.70.1",
+		"@sveltejs/kit": "^2.70.2",
 		"@sveltejs/vite-plugin-svelte": "^7.2.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"@trivago/prettier-plugin-sort-imports": "^6.0.2",
